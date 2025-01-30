@@ -1,3 +1,9 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2025 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 // globals.d.ts
 
 declare module "@api/PluginApi" {
@@ -12,13 +18,12 @@ declare module "@api/PluginApi" {
 }
 
 declare module "@modules" {
-    export const React: typeof import("react");
-    export const Webpack: {
-        findByDisplayName(displayName: string): any;
-        findBySource(source: string): any;
-        addStyle(styles: string): void;
-        findByProps(...props: string[]): any;
+    export const Logger: {
+        log(...args: any[]): void;
+        warn(...args: any[]): void;
+        error(...args: any[]): void;
     };
+
     export const Patcher: {
         after(
             module: any,
@@ -27,17 +32,10 @@ declare module "@modules" {
         ): void;
         unpatchAll(): void;
     };
-    export const Logger: {
-        log(...args: any[]): void;
-        warn(...args: any[]): void;
-        error(...args: any[]): void;
+
+    export const Webpack: {
+        findByProps(...props: string[]): any;
+        findByDisplayName(displayName: string): any;
+        addStyle(styles: string): void;
     };
 }
-
-declare module "@webpack/*" {
-    export const findByProps: (...props: string[]) => any;
-    export const findByDisplayName: (displayName: string) => any;
-    export const findModule: (filter: (module: any) => boolean) => any;
-}
-
-// Add any other custom declarations below if needed...
