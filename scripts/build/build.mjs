@@ -26,7 +26,6 @@ import { BUILD_TIMESTAMP, commonOpts, exists, globPlugins, IS_DEV, IS_REPORTER, 
 // Debug to ensure esbuild is imported correctly
 console.log("esbuild imported successfully:", !!esbuild);
 
-
 // Ensure paths in entry points exist before proceeding
 async function validatePath(path) {
     try {
