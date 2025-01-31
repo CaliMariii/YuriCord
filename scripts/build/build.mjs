@@ -1,4 +1,4 @@
-#!/usr/bin/node
+//!/usr/bin/node
 /*
  * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
@@ -18,10 +18,25 @@
 */
 
 import esbuild from "esbuild";
-import { readdir } from "fs/promises";
+import { readdir, stat } from "fs/promises";
 import { join } from "path";
 
 import { BUILD_TIMESTAMP, commonOpts, exists, globPlugins, IS_DEV, IS_REPORTER, IS_STANDALONE, IS_UPDATER_DISABLED, resolvePluginName, VERSION, commonRendererPlugins, watch } from "./common.mjs";
+
+// Debug to ensure esbuild is imported correctly
+console.log("esbuild imported successfully:", !!esbuild);
+
+
+// Ensure paths in entry points exist before proceeding
+async function validatePath(path) {
+    try {
+        const pathStat = await stat(path);
+        return pathStat.isFile();
+    } catch {
+        console.error(`Path does not exist or is invalid: ${path}`);
+        process.exit(1);
+    }
+}
 
 const defines = {
     IS_STANDALONE,
@@ -35,8 +50,6 @@ const defines = {
 };
 
 if (defines.IS_STANDALONE === false)
-    // If this is a local build (not standalone), optimize
-    // for the specific platform we're on
     defines["process.platform"] = JSON.stringify(process.platform);
 
 /**
@@ -102,6 +115,11 @@ const globNativesPlugin = {
     }
 };
 
+// Validate entry points before proceeding
+await validatePath("src/main/index.ts");
+await validatePath("src/Yuricord.ts");
+await validatePath("src/preload.ts");
+
 await Promise.all([
     // Discord Desktop main & renderer & preload
     esbuild.build({
@@ -150,56 +168,7 @@ await Promise.all([
             IS_DISCORD_DESKTOP: true,
             IS_VESKTOP: false
         }
-    }),
-
-    // Yuricord Desktop main & renderer & preload
-    esbuild.build({
-        ...nodeCommonOpts,
-        entryPoints: ["src/main/index.ts"],
-        outfile: "dist/YuricordDesktopMain.js",
-        footer: { js: "//# sourceURL=YuricordDesktopMain\n" + sourceMapFooter("YuricordDesktopMain") },
-        sourcemap,
-        define: {
-            ...defines,
-            IS_DISCORD_DESKTOP: false,
-            IS_VESKTOP: true
-        },
-        plugins: [
-            ...nodeCommonOpts.plugins,
-            globNativesPlugin
-        ]
-    }),
-    esbuild.build({
-        ...commonOpts,
-        entryPoints: ["src/Yuricord.ts"],
-        outfile: "dist/YuricordDesktopRenderer.js",
-        format: "iife",
-        target: ["esnext"],
-        footer: { js: "//# sourceURL=YuricordDesktopRenderer\n" + sourceMapFooter("YuricordDesktopRenderer") },
-        globalName: "Yuricord",
-        sourcemap,
-        plugins: [
-            globPlugins("YuricordDesktop"),
-            ...commonRendererPlugins
-        ],
-        define: {
-            ...defines,
-            IS_DISCORD_DESKTOP: false,
-            IS_VESKTOP: true
-        }
-    }),
-    esbuild.build({
-        ...nodeCommonOpts,
-        entryPoints: ["src/preload.ts"],
-        outfile: "dist/YuricordDesktopPreload.js",
-        footer: { js: "//# sourceURL=YuricordPreload\n" + sourceMapFooter("YuricordDesktopPreload") },
-        sourcemap,
-        define: {
-            ...defines,
-            IS_DISCORD_DESKTOP: false,
-            IS_VESKTOP: true
-        }
-    }),
+    })
 ]).catch(err => {
     console.error("Build failed");
     console.error(err.message);
