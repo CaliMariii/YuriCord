@@ -10,11 +10,6 @@
     margin-bottom: -2px;
 }
 
-.vc-settings-donate {
-    display: flex;
-    flex-direction: row;
-}
-
 .vc-settings-card {
     padding: 1em;
     margin-bottom: 1em;

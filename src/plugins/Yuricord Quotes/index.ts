@@ -54,9 +54,9 @@ const settings = definePluginSettings({
 });
 
 export default definePlugin({
-    name: "LoadingQuotes",
-    description: "Replace Discords loading quotes",
-    authors: [Devs.Ven, Devs.KraXen72, Devs.UlyssesZhan],
+    name: "Yuricord Quotes",
+    description: "Yuricord's official loading quotes",
+    authors: [Devs.KoitoSeed],
 
     settings,
 
@@ -93,7 +93,7 @@ export default definePlugin({
             if (!quotes.length)
                 quotes.push(noQuotesQuote);
         } catch (e) {
-            new Logger("LoadingQuotes").error("Failed to mutate quotes", e);
+            new Logger("YuricordQuotes").error("Failed to mutate quotes", e);
         }
     }
 });
