@@ -2,3 +2,4 @@ packages:
     - packages/*
 
 
+ignoreWorkspaceRootCheck: true
