@@ -20,6 +20,9 @@ importers:
       '@vap/shiki':
         specifier: 0.10.5
         version: 0.10.5
+      asar:
+        specifier: ^3.2.0
+        version: 3.2.0
       chalk:
         specifier: ^5.4.1
         version: 5.4.1
@@ -608,6 +611,9 @@ packages:
   '@types/fs-extra@11.0.4':
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
 
+  '@types/glob@7.2.0':
+    resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
+
   '@types/har-format@1.2.16':
     resolution: {integrity: sha512-fluxdy7ryD3MV6h8pTfTYpy/xQzCFC7m89nOH9y94cNqJ1mDIDPut7MnRHI3F6qRmh/cT2fUjG1MLdCNb4hE9A==}
 
@@ -622,6 +628,9 @@ packages:
 
   '@types/lodash@4.17.14':
     resolution: {integrity: sha512-jsxagdikDiDBeIRaPYtArcT8my4tN1og7MtMRquFT3XNA6axxyHDRUemqDz/taRDdOUn0GnGHRCuff4q48sW9A==}
+
+  '@types/minimatch@5.1.2':
+    resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
 
   '@types/node@18.16.3':
     resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
@@ -820,6 +829,12 @@ packages:
     resolution: {integrity: sha512-BNoCY6SXXPQ7gF2opIP4GBE+Xw7U+pHMYKuzjgCN3GwiaIR09UUeKfheyIry77QtrCBlC0KK0q5/TER/tYh3PQ==}
     engines: {node: '>= 0.4'}
 
+  asar@3.2.0:
+    resolution: {integrity: sha512-COdw2ZQvKdFGFxXwX3oYh2/sOsJWJegrdJCGxnN4MZ7IULgRBp9P6665aqj9z1v9VwP4oP1hRBojRDQ//IGgAg==}
+    engines: {node: '>=10.12.0'}
+    deprecated: Please use @electron/asar moving forward.  There is no API change, just a package name change
+    hasBin: true
+
   assign-symbols@1.0.0:
     resolution: {integrity: sha512-Q+JC7Whu8HhmTdBph/Tq59IoRtoy6KAm5zzPv00WdujX82lbAL8K7WVjne7vdCsAmbF4AYaDOPyO3k0kl8qIrw==}
     engines: {node: '>=0.10.0'}
@@ -940,6 +955,9 @@ packages:
     peerDependencies:
       devtools-protocol: '*'
 
+  chromium-pickle-js@0.2.0:
+    resolution: {integrity: sha512-1R5Fho+jBq0DDydt+/vHWj5KJNJCKdARKOCwZUen84I5BreWoLqRLANH1U87eJy1tiASPtMnGqJJq0ZsLoRPOw==}
+
   class-utils@0.3.6:
     resolution: {integrity: sha512-qOhPa/Fj7s6TY8H8esGu5QNpMMQxz79h+urzrNYN6mn+9BnxlDGf5QZ+XeCDsxSjPqsSR56XOZOJmpeurnLMeg==}
     engines: {node: '>=0.10.0'}
@@ -988,6 +1006,10 @@ packages:
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+
+  commander@5.1.0:
+    resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
+    engines: {node: '>= 6'}
 
   component-emitter@1.3.1:
     resolution: {integrity: sha512-T0+barUSQRTUQASh8bx02dl+DhF54GtIDY13Y3m9oWTklKbb3Wv974meRpeZ3lp1JpLVECWWNHC4vaG2XHXouQ==}
@@ -3195,6 +3217,12 @@ snapshots:
       '@types/jsonfile': 6.1.4
       '@types/node': 18.16.3
 
+  '@types/glob@7.2.0':
+    dependencies:
+      '@types/minimatch': 5.1.2
+      '@types/node': 22.10.5
+    optional: true
+
   '@types/har-format@1.2.16': {}
 
   '@types/json5@0.0.29': {}
@@ -3206,6 +3234,9 @@ snapshots:
   '@types/lodash@4.14.194': {}
 
   '@types/lodash@4.17.14': {}
+
+  '@types/minimatch@5.1.2':
+    optional: true
 
   '@types/node@18.16.3': {}
 
@@ -3470,6 +3501,15 @@ snapshots:
       get-intrinsic: 1.2.7
       is-array-buffer: 3.0.5
 
+  asar@3.2.0:
+    dependencies:
+      chromium-pickle-js: 0.2.0
+      commander: 5.1.0
+      glob: 7.2.3
+      minimatch: 3.1.2
+    optionalDependencies:
+      '@types/glob': 7.2.0
+
   assign-symbols@1.0.0: {}
 
   ast-types@0.13.4:
@@ -3608,6 +3648,8 @@ snapshots:
       mitt: 3.0.1
       zod: 3.23.8
 
+  chromium-pickle-js@0.2.0: {}
+
   class-utils@0.3.6:
     dependencies:
       arr-union: 3.1.0
@@ -3651,6 +3693,8 @@ snapshots:
   commander@10.0.1: {}
 
   commander@2.20.3: {}
+
+  commander@5.1.0: {}
 
   component-emitter@1.3.1: {}
 

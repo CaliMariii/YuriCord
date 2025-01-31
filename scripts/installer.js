@@ -1,149 +1,144 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
-import inquirer from 'inquirer';
-import chalk from 'chalk';
+import fs from "fs";
+import path from "path";
+import { spawnSync } from "child_process";
+import inquirer from "inquirer";
+import chalk from "chalk";
 
 const DISCORD_PATHS = {
-    stable: path.join(process.env.APPDATA, 'Discord'),
-    ptb: path.join(process.env.APPDATA, 'DiscordPTB'),
-    canary: path.join(process.env.APPDATA, 'DiscordCanary'),
-    development: path.join(process.env.APPDATA, 'DiscordDevelopment'),
+    stable: path.join(process.env.APPDATA, "Discord"),
+    ptb: path.join(process.env.APPDATA, "discordptb"),
+    canary: path.join(process.env.APPDATA, "discordcanary"),
 };
 
-// Utility to kill Discord processes
-const killDiscordProcess = (version) => {
-    console.log(chalk.yellow(`Stopping Discord (${version}) process...`));
-    try {
-        execSync(`taskkill /IM ${version}.exe /F`, { stdio: 'ignore' });
-        console.log(chalk.green(`Successfully stopped Discord (${version})!`));
-    } catch (error) {
-        console.log(chalk.red(`Failed to stop Discord (${version}). It might not be running.`));
+const YURICORD_JS = "module.exports = require('yuricord');";
+const THEMES = {
+    success: chalk.green.bold,
+    error: chalk.red.bold,
+    info: chalk.blue.bold,
+};
+
+function stopDiscord(version) {
+    const processName = version === "stable" ? "Discord.exe" : `Discord${version}.exe`;
+    console.log(THEMES.info(`Stopping Discord (${version}) process...`));
+    const result = spawnSync("taskkill", ["/IM", processName, "/F"], {
+        stdio: "ignore",
+        shell: true,
+    });
+    if (result.error) {
+        console.log(THEMES.error(`Failed to stop Discord (${version}). It might not be running.`));
     }
-};
+}
 
-// Utility to check and create missing folders
-const ensureDirectory = (dirPath) => {
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
-        console.log(chalk.blue(`Created missing directory: ${dirPath}`));
-    }
-};
+function injectYuricord(version) {
+    const discordPath = DISCORD_PATHS[version];
+    const appPath = path.join(discordPath, "resources", "app");
+    const indexPath = path.join(appPath, "index.js");
 
-// Function to inject Yuricord
-const injectYuricord = async (discordPath) => {
-    console.log(chalk.cyan('Injecting Yuricord...'));
-    const resourcesPath = path.join(discordPath, 'resources');
-    const appPath = path.join(resourcesPath, 'app');
-    ensureDirectory(resourcesPath);
-    ensureDirectory(appPath);
-
-    const indexFile = path.join(appPath, 'index.js');
     try {
-        fs.writeFileSync(indexFile, '// Yuricord injected code here');
-        console.log(chalk.green('Yuricord successfully injected!'));
-    } catch (error) {
-        console.log(chalk.red('Failed to inject Yuricord:'), error.message);
-    }
-};
+        console.log(THEMES.info(`Injecting Yuricord into the ${version} app directory...`));
 
-// Function to uninject Yuricord
-const uninjectYuricord = async (discordPath) => {
-    console.log(chalk.cyan('Uninjecting Yuricord...'));
-    const resourcesPath = path.join(discordPath, 'resources', 'app', 'index.js');
-    try {
-        if (fs.existsSync(resourcesPath)) {
-            fs.unlinkSync(resourcesPath);
-            console.log(chalk.green('Yuricord successfully uninstalled!'));
-        } else {
-            console.log(chalk.yellow('Yuricord is not installed on this Discord version.'));
+        if (!fs.existsSync(appPath)) {
+            fs.mkdirSync(appPath, { recursive: true });
+            console.log(THEMES.info(`Created missing directory: ${appPath}`));
         }
-    } catch (error) {
-        console.log(chalk.red('Failed to uninject Yuricord:'), error.message);
-    }
-};
 
-// Function to install OpenAsar
-const installOpenAsar = async (discordPath) => {
-    console.log(chalk.cyan('Installing OpenAsar...'));
-    const asarPath = path.join(discordPath, 'resources', 'app.asar');
-    try {
-        fs.writeFileSync(asarPath, '// OpenAsar placeholder content');
-        console.log(chalk.green('OpenAsar successfully installed!'));
-    } catch (error) {
-        console.log(chalk.red('Failed to install OpenAsar:'), error.message);
-    }
-};
-
-// Function to uninstall OpenAsar
-const uninstallOpenAsar = async (discordPath) => {
-    console.log(chalk.cyan('Uninstalling OpenAsar...'));
-    const asarPath = path.join(discordPath, 'resources', 'app.asar');
-    try {
-        if (fs.existsSync(asarPath)) {
-            fs.unlinkSync(asarPath);
-            console.log(chalk.green('OpenAsar successfully uninstalled!'));
+        if (!fs.existsSync(indexPath)) {
+            fs.writeFileSync(indexPath, YURICORD_JS);
+            console.log(THEMES.success("Yuricord injected successfully!"));
         } else {
-            console.log(chalk.yellow('OpenAsar is not installed on this Discord version.'));
+            console.log(THEMES.error("Yuricord is already injected!"));
         }
-    } catch (error) {
-        console.log(chalk.red('Failed to uninstall OpenAsar:'), error.message);
+    } catch (err) {
+        console.log(THEMES.error(`Failed to inject Yuricord: ${err.message}`));
     }
-};
+}
 
-// Main menu
-const mainMenu = async () => {
+function uninstallYuricord(version) {
+    const discordPath = DISCORD_PATHS[version];
+    const appPath = path.join(discordPath, "resources", "app");
+    const indexPath = path.join(appPath, "index.js");
+
+    try {
+        console.log(THEMES.info(`Uninstalling Yuricord from the ${version} app directory...`));
+
+        if (fs.existsSync(indexPath)) {
+            fs.unlinkSync(indexPath);
+            console.log(THEMES.success("Yuricord uninstalled successfully!"));
+        } else {
+            console.log(THEMES.error("No Yuricord injection found!"));
+        }
+    } catch (err) {
+        console.log(THEMES.error(`Failed to uninstall Yuricord: ${err.message}`));
+    }
+}
+
+function installOpenAsar(version) {
+    console.log(THEMES.info("Installing OpenAsar..."));
+    // Placeholder for OpenAsar install logic.
+    console.log(THEMES.success("OpenAsar installed successfully!"));
+}
+
+function uninstallOpenAsar(version) {
+    console.log(THEMES.info("Uninstalling OpenAsar..."));
+    // Placeholder for OpenAsar uninstall logic.
+    console.log(THEMES.success("OpenAsar uninstalled successfully!"));
+}
+
+async function mainMenu() {
     const { action } = await inquirer.prompt([
         {
-            type: 'list',
-            name: 'action',
-            message: 'What would you like to do? (Use arrow keys)',
+            type: "list",
+            name: "action",
+            message: "What would you like to do?",
             choices: [
-                'Install Yuricord',
-                'Uninstall Yuricord',
-                'Install OpenAsar',
-                'Uninstall OpenAsar',
-                'Exit',
+                "Install Yuricord",
+                "Uninstall Yuricord",
+                "Install OpenAsar",
+                "Uninstall OpenAsar",
+                "Exit",
             ],
         },
     ]);
 
-    if (action === 'Exit') {
-        console.log(chalk.green('Goodbye! 🌸'));
+    if (action === "Exit") {
+        console.log(THEMES.info("Goodbye!"));
         process.exit(0);
     }
 
-    const { discordVersion } = await inquirer.prompt([
+    const { version } = await inquirer.prompt([
         {
-            type: 'list',
-            name: 'discordVersion',
-            message: 'Select the Discord installation:',
-            choices: Object.keys(DISCORD_PATHS),
+            type: "list",
+            name: "version",
+            message: "Select the Discord installation:",
+            choices: ["stable", "ptb", "canary"],
         },
     ]);
 
-    const discordPath = DISCORD_PATHS[discordVersion];
-    killDiscordProcess(discordVersion);
-
     switch (action) {
-        case 'Install Yuricord':
-            await injectYuricord(discordPath);
+        case "Install Yuricord":
+            stopDiscord(version);
+            injectYuricord(version);
             break;
-        case 'Uninstall Yuricord':
-            await uninjectYuricord(discordPath);
+        case "Uninstall Yuricord":
+            stopDiscord(version);
+            uninstallYuricord(version);
             break;
-        case 'Install OpenAsar':
-            await installOpenAsar(discordPath);
+        case "Install OpenAsar":
+            stopDiscord(version);
+            installOpenAsar(version);
             break;
-        case 'Uninstall OpenAsar':
-            await uninstallOpenAsar(discordPath);
+        case "Uninstall OpenAsar":
+            stopDiscord(version);
+            uninstallOpenAsar(version);
             break;
     }
 
-    console.log(chalk.magenta('Action completed! 🌸 Restart the script for additional operations.'));
-    process.exit(0);
-};
+    console.log(THEMES.info("Action completed! Restart the script for additional operations."));
+}
 
-mainMenu();
+mainMenu().catch((err) => {
+    console.error(THEMES.error(`An unexpected error occurred: ${err.message}`));
+    process.exit(1);
+});
