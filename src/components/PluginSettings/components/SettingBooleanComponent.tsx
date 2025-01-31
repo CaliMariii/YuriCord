@@ -62,3 +62,4 @@ export function SettingBooleanComponent({ option, pluginSettings, definedSetting
 }
 
 
+

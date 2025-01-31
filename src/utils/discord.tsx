@@ -224,3 +224,4 @@ export function getEmojiURL(id: string, animated: boolean, size: number) {
     return animated ? url.replace(".webp", ".gif") : url;
 }
 
+

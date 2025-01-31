@@ -270,3 +270,4 @@ function DonateCard({ image }: DonateCardProps) {
 
 export default wrapTab(YuricordSettings, "Yuricord Settings");
 
+

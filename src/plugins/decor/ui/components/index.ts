@@ -32,3 +32,4 @@ type DecorationGridDecorationComponent = React.ComponentType<HTMLProps<HTMLDivEl
 export let DecorationGridDecoration: DecorationGridDecorationComponent;
 export const setDecorationGridDecoration = v => DecorationGridDecoration = v;
 
+

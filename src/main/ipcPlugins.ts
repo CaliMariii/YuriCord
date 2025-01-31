@@ -41,3 +41,4 @@ ipcMain.on(IpcEvents.GET_PLUGIN_IPC_METHOD_MAP, e => {
     e.returnValue = PluginIpcMappings;
 });
 
+

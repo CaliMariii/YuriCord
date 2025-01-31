@@ -72,3 +72,4 @@ export const CompactPronounsChatComponentWrapper = ErrorBoundary.wrap(({ message
     return <PronounsChatComponent message={message} />;
 }, { noop: true });
 
+

@@ -10,3 +10,4 @@ Open links in their respective apps instead of your browser
 - Tidal
 - Apple Music (iTunes)
 
+

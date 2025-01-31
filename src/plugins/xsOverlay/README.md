@@ -13,3 +13,4 @@ Sends Discord messages to [XSOverlay](https://store.steampowered.com/app/1173510
 - Set port and plugin settings as desired (defaults should work fine)
 - Open SteamVR and XSOverlay
 
+

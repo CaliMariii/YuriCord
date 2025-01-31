@@ -80,3 +80,4 @@ export function getUserSettingLazy<T = any>(group: string, name: string) {
     return proxyLazy(() => getUserSetting<T>(group, name));
 }
 
+

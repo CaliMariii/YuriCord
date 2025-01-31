@@ -140,3 +140,4 @@ export default definePlugin({
     renderChatBarButton: SilentTypingToggle,
 });
 
+

@@ -56,3 +56,4 @@ export function crxToZip(buf: Buffer) {
     return buf.subarray(zipStartOffset, buf.length);
 }
 
+

@@ -8,3 +8,4 @@ Improves Discord's Settings via multiple (toggleable) changes:
 ![](https://github.com/Vendicated/Yuricord/assets/45497981/e8d67a95-3909-4be5-8281-8cf9d2f1c30e)
 
 
+

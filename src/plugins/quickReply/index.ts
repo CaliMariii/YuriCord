@@ -224,3 +224,4 @@ function nextEdit(isUp: boolean) {
     jumpIfOffScreen(message.channel_id, message.id);
 }
 
+

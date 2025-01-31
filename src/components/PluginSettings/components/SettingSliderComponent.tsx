@@ -70,3 +70,4 @@ export function SettingSliderComponent({ option, pluginSettings, definedSettings
 }
 
 
+

@@ -7,3 +7,4 @@ Either in the timeout icon tooltip, or next to it, configurable via settings!
 
 ![indicator next to timeout icon](https://github.com/Vendicated/Yuricord/assets/45497981/ab9d2101-0fdc-4143-9310-9488f056eeee)
 
+

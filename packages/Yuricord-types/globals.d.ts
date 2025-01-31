@@ -16,9 +16,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import PluginSettings from "@components/PluginSettings";
+declare global {
+    export var YuricordNative: typeof import("./YuricordNative").default;
+    export var Yuricord: typeof import("./Yuricord");
+}
 
-import { wrapTab } from "./shared";
+export { };
 
-export default wrapTab(PluginSettings, "Plugins");
 

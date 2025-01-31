@@ -319,3 +319,4 @@ await page.evaluateOnNewDocument(`
 
 await page.goto(CANARY ? "https://canary.discord.com/login" : "https://discord.com/login");
 
+

@@ -47,3 +47,4 @@ export function makeLinksOpenExternally(win: BrowserWindow) {
     });
 }
 
+

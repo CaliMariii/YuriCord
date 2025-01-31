@@ -55,3 +55,4 @@ If you think a new page should be added, feel free to suggest it via an issue an
 We have an open support channel in our [Discord community](https://Yuricord.dev/discord).
 Helping out users there is always appreciated! The more, the merrier.
 
+

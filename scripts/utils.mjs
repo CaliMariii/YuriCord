@@ -29,3 +29,4 @@ export function getPluginTarget(filePath) {
     return identiferBits.length === 1 ? null : identiferBits.at(-1);
 }
 
+

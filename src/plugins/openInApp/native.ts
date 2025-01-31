@@ -30,3 +30,4 @@ export async function resolveRedirect(_: IpcMainInvokeEvent, url: string) {
     return getRedirect(url);
 }
 
+

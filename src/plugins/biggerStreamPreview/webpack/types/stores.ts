@@ -76,3 +76,4 @@ export interface ApplicationStreamingStore extends FluxStore {
     isSelfStreamHidden: (channelId: string | bigint | null) => boolean;
 }
 
+

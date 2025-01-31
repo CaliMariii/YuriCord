@@ -187,3 +187,4 @@ export async function syncFriends() {
     await DataStore.set(friendsKey(), friends);
 }
 
+

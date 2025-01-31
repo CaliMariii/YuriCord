@@ -667,3 +667,4 @@ export function extract(id: string | number) {
     return extracted as Function;
 }
 
+

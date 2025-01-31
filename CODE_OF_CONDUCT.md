@@ -20,3 +20,4 @@ If you feel like a user is violating these guidelines or feel treated unfairly, 
 and instead report the issue to a moderator! The best way is joining our [official Discord community](https://Yuricord.dev/discord)
 and opening a modmail ticket.
 
+

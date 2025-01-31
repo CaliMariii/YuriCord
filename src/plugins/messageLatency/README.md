@@ -30,3 +30,4 @@ Displays an indicator for messages that took ≥n seconds to send.
 
 ![icons](https://github.com/Vendicated/Yuricord/assets/82430093/17630bd9-44ee-4967-bcdf-3315eb6eca85)
 
+

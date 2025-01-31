@@ -4,3 +4,4 @@ Makes YouTube embed titles and thumbnails less sensationalist, powered by [Dearr
 
 https://github.com/Vendicated/Yuricord/assets/45497981/7bf81108-102d-47c5-8ba5-357db4db1283
 
+

@@ -130,3 +130,4 @@ export async function fetchTrackData(): Promise<TrackData | null> {
     return { name, album, artist, playerPosition, duration, ...remoteData };
 }
 
+

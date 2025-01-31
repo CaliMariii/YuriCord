@@ -160,3 +160,4 @@ if (!IS_VANILLA) {
 console.log("[Yuricord] Loading original Discord app.asar");
 require(require.main!.filename);
 
+

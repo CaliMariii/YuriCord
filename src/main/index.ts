@@ -134,3 +134,4 @@ if (IS_DISCORD_DESKTOP) {
     require("./patcher");
 }
 
+

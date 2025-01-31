@@ -180,3 +180,4 @@ async function migrateData() {
     await Promise.all([DataStore.del(CATEGORY_MIGRATED_PINDMS_KEY), DataStore.del(CATEGORY_MIGRATED_KEY), DataStore.del(OLD_CATEGORY_KEY)]);
 }
 
+

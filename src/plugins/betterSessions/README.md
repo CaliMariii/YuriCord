@@ -4,3 +4,4 @@ Enhances the sessions (devices) menu. Allows you to view exact timestamps, give 
 
 ![](https://github.com/Vendicated/Yuricord/assets/9750071/4a44b617-bb8f-4dcb-93f1-b7d2575ed3d8)
 
+

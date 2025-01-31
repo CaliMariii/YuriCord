@@ -30,3 +30,4 @@ export function showItemInFolder(path: string) {
         window.VesktopNative.fileManager.showItemInFolder(path);
 }
 
+

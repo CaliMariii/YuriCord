@@ -34,3 +34,4 @@ export function useFormattedPronouns(id: string, useGlobalProfile: boolean = fal
     return settings.store.pronounsFormat === PronounsFormat.Lowercase ? pronouns?.toLowerCase() : pronouns;
 }
 
+

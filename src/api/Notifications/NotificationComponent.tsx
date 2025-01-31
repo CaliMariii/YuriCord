@@ -122,3 +122,4 @@ export default ErrorBoundary.wrap(function NotificationComponent({
     onError: ({ props }) => props.onClose!()
 });
 
+

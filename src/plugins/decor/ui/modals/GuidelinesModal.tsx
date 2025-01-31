@@ -64,3 +64,4 @@ function GuidelinesModal(props: ModalProps) {
 export const openGuidelinesModal = () =>
     requireAvatarDecorationModal().then(() => openModal(props => <GuidelinesModal {...props} />));
 
+

@@ -31,3 +31,4 @@ jobs:
             - name: Test if plugin structure is valid
               run: pnpm generatePluginJson
 
+

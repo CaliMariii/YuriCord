@@ -119,3 +119,4 @@ ErrorBoundary.wrap = (Component, errorBoundaryProps) => props => (
 
 export default ErrorBoundary;
 
+

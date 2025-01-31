@@ -143,3 +143,4 @@ ipcMain.handle(IpcEvents.OPEN_MONACO_EDITOR, async () => {
     await win.loadURL(`data:text/html;base64,${monacoHtml}`);
 });
 
+

@@ -92,3 +92,4 @@ export function AddonCard({ disabled, isNew, name, infoButton, footer, author, e
     );
 }
 
+

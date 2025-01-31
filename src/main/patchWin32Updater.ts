@@ -71,3 +71,4 @@ function patchLatest() {
 // Discord's Win32 updater will call app.quit() on restart and open new version on will-quit
 app.on("before-quit", patchLatest);
 
+

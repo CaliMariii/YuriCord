@@ -92,3 +92,4 @@ export const getTheme = (url: string): Promise<IShikiTheme> => {
     return fetch(url).then(res => res.json());
 };
 
+

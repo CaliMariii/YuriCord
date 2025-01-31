@@ -169,3 +169,4 @@ export const openCreateDecorationModal = () =>
     Promise.all([requireAvatarDecorationModal(), requireCreateStickerModal()])
         .then(() => openModal(props => <CreateDecorationModal {...props} />));
 
+

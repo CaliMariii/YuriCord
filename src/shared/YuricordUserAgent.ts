@@ -11,3 +11,4 @@ export { gitHash, gitRemote };
 
 export const Yuricord_USER_AGENT = `Yuricord/${gitHash}${gitRemote ? ` (https://github.com/${gitRemote})` : ""}`;
 
+

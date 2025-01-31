@@ -8,3 +8,4 @@ Note that this plugin can't fetch old summaries, it can only display ones create
 
 ![](https://github.com/Vendicated/Yuricord/assets/45497981/bd931b0c-2e85-4c10-9f7c-8ba01eb55745)
 
+

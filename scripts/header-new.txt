@@ -2,3 +2,4 @@ Yuricord, a Discord client mod
 Copyright (c) {year} {author}
 SPDX-License-Identifier: GPL-3.0-or-later
 
+

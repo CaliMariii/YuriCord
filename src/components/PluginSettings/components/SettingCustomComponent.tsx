@@ -24,3 +24,4 @@ export function SettingCustomComponent({ option, onChange, onError }: ISettingCu
     return option.component({ setValue: onChange, setError: onError, option });
 }
 
+

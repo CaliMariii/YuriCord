@@ -16,3 +16,4 @@ Review the [guidelines](https://github.com/decor-discord/.github/blob/main/GUIDE
 
 Join the [Discord server](https://discord.gg/dXp2SdxDcP) for support and notifications on your decoration's review.
 
+

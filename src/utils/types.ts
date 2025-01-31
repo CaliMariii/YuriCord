@@ -395,3 +395,4 @@ export type PluginNative<PluginExports extends Record<string, (event: Electron.I
     : never;
 };
 
+

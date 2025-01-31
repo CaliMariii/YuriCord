@@ -38,3 +38,4 @@ export default function SectionedGridList<ItemT, SectionU,>(props: SectionedGrid
     </div>;
 }
 
+

@@ -72,3 +72,4 @@ export function SettingNumericComponent({ option, pluginSettings, definedSetting
     );
 }
 
+

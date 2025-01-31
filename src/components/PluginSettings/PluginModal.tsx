@@ -324,3 +324,4 @@ export function openPluginModal(plugin: Plugin, onRestartNeeded?: (pluginName: s
     ));
 }
 
+

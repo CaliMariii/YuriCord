@@ -46,3 +46,4 @@ export function ButtonRow({ content, theme }: ButtonRowProps) {
     return <div className={cl("btns")}>{buttons}</div>;
 }
 
+

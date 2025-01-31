@@ -15,3 +15,4 @@ export function initDevtoolsOpenEagerLoad(e: IpcMainInvokeEvent) {
         e.sender.once("devtools-opened", () => handleDevtoolsOpened());
 }
 
+

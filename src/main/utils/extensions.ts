@@ -87,3 +87,4 @@ export async function installExt(id: string) {
     session.defaultSession.loadExtension(extDir);
 }
 
+

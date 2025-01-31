@@ -291,3 +291,4 @@ function ChangeDecorationModal(props: ModalProps) {
 export const openChangeDecorationModal = () =>
     requireAvatarDecorationModal().then(() => openModal(props => <ChangeDecorationModal {...props} />));
 
+

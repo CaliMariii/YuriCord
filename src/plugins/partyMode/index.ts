@@ -108,3 +108,4 @@ function setSettings(intensity: Intensity) {
     });
 }
 
+

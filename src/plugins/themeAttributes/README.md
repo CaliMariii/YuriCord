@@ -28,3 +28,4 @@ This allows themes to more easily theme those elements or even do things that ot
 
 ![image](https://github.com/Vendicated/Yuricord/assets/26598490/192ddac0-c827-472f-9933-fa99ff36f723)
 
+

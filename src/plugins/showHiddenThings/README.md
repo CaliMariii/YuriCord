@@ -18,3 +18,4 @@ Displays various hidden & moderator-only things regardless of permissions.
 
 - Disable filters in Server Discovery search that hide NSFW & disallowed servers
 
+

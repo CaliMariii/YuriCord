@@ -6,3 +6,4 @@ Revival of the old client theme experiment (The one that came before the sucky o
 
 https://github.com/Vendicated/Yuricord/assets/45497981/6c1bcb3b-e0c7-4a02-b0b8-c4c5cd954f38
 
+

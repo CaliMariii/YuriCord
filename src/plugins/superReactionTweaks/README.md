@@ -10,3 +10,4 @@ This plugin applies configurable various tweaks to super reactions.
 
 **Super Reaction Play Limit** - Allows you to decide how many super reaction animations can play at once, including removing the limit entirely.
 
+

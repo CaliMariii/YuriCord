@@ -16,3 +16,4 @@ colors next to names**.
 Created for use with the [Compact++](https://gitlab.com/Grzesiek11/compactplusplus-discord-theme)
 theme.
 
+

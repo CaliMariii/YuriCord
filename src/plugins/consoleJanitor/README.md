@@ -4,3 +4,4 @@ Disables annoying console messages/errors. This plugin mainly removes errors/war
 
 One of the disabled messages is the "Window state not initialized" warning, for example.
 
+

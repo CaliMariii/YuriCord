@@ -210,3 +210,4 @@ export const Magnifier = ErrorBoundary.wrap<MagnifierProps>(({ instance, size: i
     );
 }, { noop: true });
 
+

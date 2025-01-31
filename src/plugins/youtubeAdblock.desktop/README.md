@@ -6,3 +6,4 @@ Note that this only works for yourself, other users in the activity will still s
 
 Powered by a modified version of [Adguard's BlockYoutubeAdsShortcut](https://github.com/AdguardTeam/BlockYouTubeAdsShortcut)
 
+

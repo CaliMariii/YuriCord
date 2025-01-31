@@ -28,3 +28,4 @@ export async function makeDeeplTranslateRequest(_: IpcMainInvokeEvent, pro: bool
     }
 }
 
+

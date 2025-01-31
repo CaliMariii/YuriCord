@@ -28,3 +28,4 @@ export function updateMessage(channelId: string, messageId: string, fields?: Par
     (MessageStore as unknown as FluxStore).emitChange();
 }
 
+

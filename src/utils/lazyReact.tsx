@@ -28,3 +28,4 @@ export function LazyComponent<T extends object = any>(factory: () => React.Compo
     return LazyComponent as ComponentType<T>;
 }
 
+

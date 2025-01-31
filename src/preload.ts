@@ -63,3 +63,4 @@ else {
     contextBridge.exposeInMainWorld("getTheme", () => "vs-dark");
 }
 
+

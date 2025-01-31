@@ -58,3 +58,4 @@ export function SettingTextComponent({ option, pluginSettings, definedSettings, 
     );
 }
 
+

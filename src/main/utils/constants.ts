@@ -41,3 +41,4 @@ export const ALLOWED_PROTOCOLS = [
 
 export const IS_VANILLA = /* @__PURE__ */ process.argv.includes("--vanilla");
 
+

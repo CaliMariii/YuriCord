@@ -16,3 +16,4 @@ export function decorationToAvatarDecoration(decoration: Decoration): AvatarDeco
     return { asset: decorationToAsset(decoration), skuId: SKU_ID };
 }
 
+

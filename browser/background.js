@@ -31,3 +31,4 @@ chrome.webRequest.onHeadersReceived.addListener(
     ["blocking", "responseHeaders"]
 );
 
+

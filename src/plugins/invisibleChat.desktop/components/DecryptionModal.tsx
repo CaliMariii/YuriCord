@@ -76,3 +76,4 @@ export function buildDecModal(msg: any): any {
     openModal((props: any) => <DecModal {...props} {...msg} />);
 }
 
+

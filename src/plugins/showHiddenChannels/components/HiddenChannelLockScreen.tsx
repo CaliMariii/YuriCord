@@ -324,3 +324,4 @@ function HiddenChannelLockScreen({ channel }: { channel: ExtendedChannel; }) {
 
 export default ErrorBoundary.wrap(HiddenChannelLockScreen);
 
+

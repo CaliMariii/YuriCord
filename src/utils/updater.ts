@@ -82,3 +82,4 @@ export async function maybePromptToUpdate(confirmMessage: string, checkForDev = 
     }
 }
 
+
