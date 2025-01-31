@@ -35,11 +35,11 @@ const ETAG_FILE = join(FILE_DIR, "etag.txt");
 function getFilename() {
     switch (process.platform) {
         case "win32":
-            return "VencordInstallerCli.exe";
+            return "vencordInstallerCli.exe";
         case "darwin":
-            return "VencordInstaller.MacOS.zip";
+            return "vencordInstaller.MacOS.zip";
         case "linux":
-            return "VencordInstallerCli-linux";
+            return "vencordInstallerCli-linux";
         default:
             throw new Error("Unsupported platform: " + process.platform);
     }
@@ -53,7 +53,7 @@ async function ensureBinary() {
 
     const downloadName = join(FILE_DIR, filename);
     const outputFile = process.platform === "darwin"
-        ? join(FILE_DIR, "VencordInstaller")
+        ? join(FILE_DIR, "vencordInstaller")
         : downloadName;
 
     const etag = existsSync(outputFile) && existsSync(ETAG_FILE)
@@ -62,7 +62,7 @@ async function ensureBinary() {
 
     const res = await fetch(BASE_URL + filename, {
         headers: {
-            "User-Agent": "Vencord (https://github.com/Vendicated/Vencord)",
+            "User-Agent": "Vencord (https://github.com/Koitoseed/vencord)",
             "If-None-Match": etag
         }
     });

@@ -247,7 +247,7 @@ function DonateCard({ image }: DonateCardProps) {
     return (
         <Card className={cl("card", "donate")}>
             <div>
-                <Forms.FormTitle tag="h5">Support the Project</Forms.FormTitle>
+                <Forms.FormTitle tag="h5">Please support VENCORD (Not Yuricord)</Forms.FormTitle>
                 <Forms.FormText>Please consider supporting the development of Vencord by donating!
                     (this is to donate to actual vencord as it is the basis for this project and their work is exceptional)
                 </Forms.FormText>

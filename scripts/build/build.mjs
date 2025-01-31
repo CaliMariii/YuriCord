@@ -127,7 +127,7 @@ await Promise.all([
         format: "iife",
         target: ["esnext"],
         footer: { js: "//# sourceURL=VencordRenderer\n" + sourceMapFooter("renderer") },
-        globalName: "Vencord",
+        globalName: "Yuricord",
         sourcemap,
         plugins: [
             globPlugins("discordDesktop"),
@@ -152,7 +152,7 @@ await Promise.all([
         }
     }),
 
-    // Vencord Desktop main & renderer & preload
+    // Yuricord Desktop main & renderer & preload
     esbuild.build({
         ...nodeCommonOpts,
         entryPoints: ["src/main/index.ts"],

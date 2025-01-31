@@ -85,12 +85,12 @@ export default definePlugin({
         return [
             {
                 section: SectionTypes.HEADER,
-                label: "Vencord",
+                label: "Yuricord",
                 className: "vc-settings-header"
             },
             {
-                section: "VencordSettings",
-                label: "Vencord",
+                section: "YuricordSettings",
+                label: "Yuricord",
                 element: VencordTab,
                 className: "vc-settings"
             },
@@ -101,13 +101,13 @@ export default definePlugin({
                 className: "vc-plugins"
             },
             {
-                section: "VencordThemes",
+                section: "Yuricordhemes",
                 label: "Themes",
                 element: ThemesTab,
                 className: "vc-themes"
             },
             !IS_UPDATER_DISABLED && {
-                section: "VencordUpdater",
+                section: "YuricordUpdater",
                 label: "Updater",
                 element: UpdaterTab,
                 className: "vc-updater"
@@ -119,13 +119,13 @@ export default definePlugin({
                 className: "vc-cloud"
             },
             {
-                section: "VencordSettingsSync",
+                section: "YuricordSettingsSync",
                 label: "Backup & Restore",
                 element: BackupAndRestoreTab,
                 className: "vc-backup-restore"
             },
             IS_DEV && {
-                section: "VencordPatchHelper",
+                section: "YuricordPatchHelper",
                 label: "Patch Helper",
                 element: PatchHelperTab,
                 className: "vc-patch-helper"
@@ -190,7 +190,7 @@ export default definePlugin({
     options: {
         settingsLocation: {
             type: OptionType.SELECT,
-            description: "Where to put the Vencord settings section",
+            description: "Where to put the Yuricord settings section",
             options: [
                 { label: "At the very top", value: "top" },
                 { label: "Above the Nitro section", value: "aboveNitro", default: true },
@@ -228,7 +228,7 @@ export default definePlugin({
     getInfoRows() {
         const { electronVersion, chromiumVersion, additionalInfo } = this;
 
-        const rows = [`Vencord ${gitHash}${additionalInfo}`];
+        const rows = [`Yuricord🌸 ${gitHash}${additionalInfo}`];
 
         if (electronVersion) rows.push(`Electron ${electronVersion}`);
         if (chromiumVersion) rows.push(`Chromium ${chromiumVersion}`);
