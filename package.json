@@ -60,7 +60,6 @@
         "eslint": "^9.17.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-path-alias": "2.1.0",
-        "eslint-plugin-react": "^7.37.3",
         "eslint-plugin-simple-header": "^1.2.1",
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-unused-imports": "^4.1.4",
@@ -82,10 +81,6 @@
     },
     "packageManager": "pnpm@9.1.0",
     "pnpm": {
-        "patchedDependencies": {
-            "eslint@9.17.0": "patches/eslint@9.17.0.patch",
-            "eslint-plugin-path-alias@2.1.0": "patches/eslint-plugin-path-alias@2.1.0.patch"
-        },
         "peerDependencyRules": {
             "ignoreMissing": [
                 "eslint-plugin-import",
@@ -111,5 +106,3 @@
         "pnpm": ">=9"
     }
 }
-
-
