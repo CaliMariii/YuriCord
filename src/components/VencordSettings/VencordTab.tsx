@@ -19,13 +19,14 @@
 import { openNotificationLogModal } from "@api/Notifications/notificationLog";
 import { useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
+import DonateButton from "@components/DonateButton";
 import { openPluginModal } from "@components/PluginSettings/PluginModal";
 import { gitRemote } from "@shared/vencordUserAgent";
 import { Margins } from "@utils/margins";
 import { identity } from "@utils/misc";
 import { relaunch, showItemInFolder } from "@utils/native";
 import { useAwaiter } from "@utils/react";
-import { Button, Forms, React, Select, Switch } from "@webpack/common";
+import { Button, Card, Forms, React, Select, Switch } from "@webpack/common";
 
 import { Flex, FolderIcon, GithubIcon, LogIcon, PaintbrushIcon, RestartIcon } from "..";
 import { openNotificationSettingsModal } from "./NotificationSettings";
@@ -33,6 +34,9 @@ import { QuickAction, QuickActionCard } from "./quickActions";
 import { SettingsTab, wrapTab } from "./shared";
 
 const cl = classNameFactory("vc-settings-");
+
+const DEFAULT_DONATE_IMAGE = "https://cdn.discordapp.com/emojis/1026533090627174460.png";
+const SHIGGY_DONATE_IMAGE = "https://media.discordapp.net/stickers/1039992459209490513.png";
 
 type KeysOfType<Object, Type> = {
     [K in keyof Object]: Object[K] extends Type ? K : never;
@@ -45,6 +49,7 @@ function VencordSettings() {
     });
     const settings = useSettings();
 
+    const donateImage = React.useMemo(() => Math.random() > 0.5 ? DEFAULT_DONATE_IMAGE : SHIGGY_DONATE_IMAGE, []);
 
     const isWindows = navigator.platform.toLowerCase().startsWith("win");
     const isMac = navigator.platform.toLowerCase().startsWith("mac");
@@ -93,7 +98,8 @@ function VencordSettings() {
         ];
 
     return (
-        <SettingsTab title="Yuricord🌸 Settings">
+        <SettingsTab title="Vencord Settings">
+            <DonateCard image={donateImage} />
             <Forms.FormSection title="Quick Actions">
                 <QuickActionCard>
                     <QuickAction
@@ -219,7 +225,7 @@ function VencordSettings() {
                     serialize={identity} />
             </>}
 
-            <Forms.FormSection className={Margins.top16} title="Yuricord🌸 Notifications" tag="h5">
+            <Forms.FormSection className={Margins.top16} title="Vencord Notifications" tag="h5">
                 <Flex>
                     <Button onClick={openNotificationSettingsModal}>
                         Notification Settings
@@ -233,4 +239,31 @@ function VencordSettings() {
     );
 }
 
-export default wrapTab(VencordSettings, "Yuricord🌸 Settings");
+interface DonateCardProps {
+    image: string;
+}
+
+function DonateCard({ image }: DonateCardProps) {
+    return (
+        <Card className={cl("card", "donate")}>
+            <div>
+                <Forms.FormTitle tag="h5">Support the Project</Forms.FormTitle>
+                <Forms.FormText>Please consider supporting the development of Vencord by donating!</Forms.FormText>
+                <DonateButton style={{ transform: "translateX(-1em)" }} />
+            </div>
+            <img
+                role="presentation"
+                src={image}
+                alt=""
+                height={128}
+                style={{
+                    imageRendering: image === SHIGGY_DONATE_IMAGE ? "pixelated" : void 0,
+                    marginLeft: "auto",
+                    transform: image === DEFAULT_DONATE_IMAGE ? "rotate(10deg)" : void 0
+                }}
+            />
+        </Card>
+    );
+}
+
+export default wrapTab(VencordSettings, "Vencord Settings");
