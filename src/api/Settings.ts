@@ -156,6 +156,9 @@ export const SettingsStore = new SettingsStoreClass(settings, {
     }
 });
 
+export { OptionType } from "@utils/types";
+
+
 if (!IS_REPORTER) {
     SettingsStore.addGlobalChangeListener((_, path) => {
         SettingsStore.plain.cloud.settingsSyncVersion = Date.now();
