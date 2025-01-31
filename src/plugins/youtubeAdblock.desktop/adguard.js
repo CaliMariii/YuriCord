@@ -214,3 +214,4 @@ observeDomChanges(() => {
     hideDynamicAds();
     autoSkipAds();
 });
+

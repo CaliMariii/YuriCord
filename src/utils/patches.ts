@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ export function canonicalizeMatch<T extends RegExp | string>(match: T): T {
 }
 
 export function canonicalizeReplace<T extends string | ReplaceFn>(replace: T, pluginName: string): T {
-    const self = `Vencord.Plugins.plugins[${JSON.stringify(pluginName)}]`;
+    const self = `Yuricord.Plugins.plugins[${JSON.stringify(pluginName)}]`;
 
     if (typeof replace !== "function")
         return replace.replaceAll("$self", self) as T;
@@ -80,3 +80,4 @@ export function canonicalizeFind(patch: Patch) {
     descriptors.find = canonicalizeDescriptor(descriptors.find, canonicalizeMatch);
     Object.defineProperties(patch, descriptors);
 }
+

@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ export const _init = function (cmds: Command[]) {
 } as never;
 
 export const _handleCommand = function (cmd: Command, args: Argument[], ctx: CommandContext) {
-    if (!cmd.isVencordCommand)
+    if (!cmd.isYuricordCommand)
         return cmd.execute(args, ctx);
 
     const handleError = (err: any) => {
@@ -68,7 +68,7 @@ export const _handleCommand = function (cmd: Command, args: Argument[], ctx: Com
         sendBotMessage(ctx.channel.id, {
             content: `${msg}:\n${makeCodeblock(reason)}`,
             author: {
-                username: "Vencord"
+                username: "Yuricord"
             }
         });
     };
@@ -139,7 +139,7 @@ export function registerCommand<C extends Command>(command: C, plugin: string) {
     if (BUILT_IN.some(c => c.name === command.name))
         throw new Error(`Command '${command.name}' already exists.`);
 
-    command.isVencordCommand = true;
+    command.isYuricordCommand = true;
     command.untranslatedName ??= command.name;
     command.untranslatedDescription ??= command.description;
     command.id ??= `-${BUILT_IN.length + 1}`;
@@ -169,3 +169,4 @@ export function unregisterCommand(name: string) {
 
     return true;
 }
+

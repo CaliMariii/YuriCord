@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -81,3 +81,4 @@ export const deleteDecoration = async (hash: string): Promise<void> => {
 };
 
 export const getPresets = async (): Promise<Preset[]> => fetch(API_URL + "/decorations/presets").then(c => c.json());
+

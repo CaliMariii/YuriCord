@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2023 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,8 +25,8 @@ import { Readable } from "stream";
 import { finished } from "stream/promises";
 import { fileURLToPath } from "url";
 
-const BASE_URL = "https://github.com/Vencord/Installer/releases/latest/download/";
-const INSTALLER_PATH_DARWIN = "VencordInstaller.app/Contents/MacOS/VencordInstaller";
+const BASE_URL = "https://github.com/Yuricord/Installer/releases/latest/download/";
+const INSTALLER_PATH_DARWIN = "YuricordInstaller.app/Contents/MacOS/YuricordInstaller";
 
 const BASE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILE_DIR = join(BASE_DIR, "dist", "Installer");
@@ -35,11 +35,11 @@ const ETAG_FILE = join(FILE_DIR, "etag.txt");
 function getFilename() {
     switch (process.platform) {
         case "win32":
-            return "vencordInstallerCli.exe";
+            return "YuricordInstallerCli.exe";
         case "darwin":
-            return "vencordInstaller.MacOS.zip";
+            return "YuricordInstaller.MacOS.zip";
         case "linux":
-            return "vencordInstallerCli-linux";
+            return "YuricordInstallerCli-linux";
         default:
             throw new Error("Unsupported platform: " + process.platform);
     }
@@ -53,7 +53,7 @@ async function ensureBinary() {
 
     const downloadName = join(FILE_DIR, filename);
     const outputFile = process.platform === "darwin"
-        ? join(FILE_DIR, "vencordInstaller")
+        ? join(FILE_DIR, "YuricordInstaller")
         : downloadName;
 
     const etag = existsSync(outputFile) && existsSync(ETAG_FILE)
@@ -62,7 +62,7 @@ async function ensureBinary() {
 
     const res = await fetch(BASE_URL + filename, {
         headers: {
-            "User-Agent": "Vencord (https://github.com/Koitoseed/vencord)",
+            "User-Agent": "Yuricord (https://github.com/Koitoseed/Yuricord)",
             "If-None-Match": etag
         }
     });
@@ -96,7 +96,7 @@ async function ensureBinary() {
                 execSync(cmd);
             } catch { }
         };
-        logAndRun(`sudo spctl --add '${outputFile}' --label "Vencord Installer"`);
+        logAndRun(`sudo spctl --add '${outputFile}' --label "Yuricord Installer"`);
         logAndRun(`sudo xattr -d com.apple.quarantine '${outputFile}'`);
     } else {
         // WHY DOES NODE FETCH RETURN A WEB STREAM OH MY GOD
@@ -123,10 +123,11 @@ try {
         stdio: "inherit",
         env: {
             ...process.env,
-            VENCORD_USER_DATA_DIR: BASE_DIR,
-            VENCORD_DEV_INSTALL: "1"
+            Yuricord_USER_DATA_DIR: BASE_DIR,
+            Yuricord_DEV_INSTALL: "1"
         }
     });
 } catch {
     console.error("Something went wrong. Please check the logs above.");
 }
+

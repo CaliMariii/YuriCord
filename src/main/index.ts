@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2023 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,8 +28,8 @@ if (IS_VESKTOP || !IS_VANILLA) {
     app.whenReady().then(() => {
         // Source Maps! Maybe there's a better way but since the renderer is executed
         // from a string I don't think any other form of sourcemaps would work
-        protocol.registerFileProtocol("vencord", ({ url: unsafeUrl }, cb) => {
-            let url = unsafeUrl.slice("vencord://".length);
+        protocol.registerFileProtocol("Yuricord", ({ url: unsafeUrl }, cb) => {
+            let url = unsafeUrl.slice("Yuricord://".length);
             if (url.endsWith("/")) url = url.slice(0, -1);
             if (url.startsWith("/themes/")) {
                 const theme = url.slice("/themes/".length);
@@ -43,11 +43,11 @@ if (IS_VESKTOP || !IS_VANILLA) {
             }
             switch (url) {
                 case "renderer.js.map":
-                case "vencordDesktopRenderer.js.map":
+                case "YuricordDesktopRenderer.js.map":
                 case "preload.js.map":
-                case "vencordDesktopPreload.js.map":
+                case "YuricordDesktopPreload.js.map":
                 case "patcher.js.map":
-                case "vencordDesktopMain.js.map":
+                case "YuricordDesktopMain.js.map":
                     cb(join(__dirname, url));
                     break;
                 default:
@@ -95,7 +95,7 @@ if (IS_VESKTOP || !IS_VANILLA) {
 
                 for (const directive of ["style-src", "connect-src", "img-src", "font-src", "media-src", "worker-src"]) {
                     csp[directive] ??= [];
-                    csp[directive].push("*", "blob:", "data:", "vencord:", "'unsafe-inline'");
+                    csp[directive].push("*", "blob:", "data:", "Yuricord:", "'unsafe-inline'");
                 }
 
                 // TODO: Restrict this to only imported packages with fixed version.
@@ -133,3 +133,4 @@ if (IS_VESKTOP || !IS_VANILLA) {
 if (IS_DISCORD_DESKTOP) {
     require("./patcher");
 }
+

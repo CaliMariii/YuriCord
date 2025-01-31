@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -36,20 +36,20 @@ export async function importSettings(data: string) {
 
     if ("settings" in parsed && "quickCss" in parsed) {
         Object.assign(PlainSettings, parsed.settings);
-        await VencordNative.settings.set(parsed.settings);
-        await VencordNative.quickCss.set(parsed.quickCss);
+        await YuricordNative.settings.set(parsed.settings);
+        await YuricordNative.quickCss.set(parsed.quickCss);
     } else
-        throw new Error("Invalid Settings. Is this even a Vencord Settings file?");
+        throw new Error("Invalid Settings. Is this even a Yuricord Settings file?");
 }
 
 export async function exportSettings({ minify }: { minify?: boolean; } = {}) {
-    const settings = VencordNative.settings.get();
-    const quickCss = await VencordNative.quickCss.get();
+    const settings = YuricordNative.settings.get();
+    const quickCss = await YuricordNative.quickCss.get();
     return JSON.stringify({ settings, quickCss }, null, minify ? undefined : 4);
 }
 
 export async function downloadSettingsBackup() {
-    const filename = `vencord-settings-backup-${moment().format("YYYY-MM-DD")}.json`;
+    const filename = `Yuricord-settings-backup-${moment().format("YYYY-MM-DD")}.json`;
     const backup = await exportSettings();
     const data = new TextEncoder().encode(backup);
 
@@ -77,7 +77,7 @@ export async function uploadSettingsBackup(showToast = true): Promise<void> {
     if (IS_DISCORD_DESKTOP) {
         const [file] = await DiscordNative.fileManager.openFiles({
             filters: [
-                { name: "Vencord Settings Backup", extensions: ["json"] },
+                { name: "Yuricord Settings Backup", extensions: ["json"] },
                 { name: "all", extensions: ["*"] }
             ]
         });
@@ -137,7 +137,7 @@ export async function putCloudSettings(manual?: boolean) {
 
         const { written } = await res.json();
         PlainSettings.cloud.settingsSyncVersion = written;
-        VencordNative.settings.set(PlainSettings);
+        YuricordNative.settings.set(PlainSettings);
 
         cloudSettingsLogger.info("Settings uploaded to cloud successfully");
 
@@ -222,7 +222,7 @@ export async function getCloudSettings(shouldNotify = true, force = false) {
 
         // sync with server timestamp instead of local one
         PlainSettings.cloud.settingsSyncVersion = written;
-        VencordNative.settings.set(PlainSettings);
+        YuricordNative.settings.set(PlainSettings);
 
         cloudSettingsLogger.info("Settings loaded from cloud successfully");
         if (shouldNotify)
@@ -279,3 +279,4 @@ export async function deleteCloudSettings() {
         });
     }
 }
+

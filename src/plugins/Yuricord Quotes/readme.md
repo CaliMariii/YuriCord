@@ -5,3 +5,4 @@ YuriCord Quotes is a simple YuriCord plugin that **changes the Discord startup m
 WINNERS LOVE WINNING AMIRITE LADS
 
 
+

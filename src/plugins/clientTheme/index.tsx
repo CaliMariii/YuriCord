@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -289,3 +289,4 @@ function relativeLuminance(hexCode: string) {
 
     return r * 0.2126 + g * 0.7152 + b * 0.0722;
 }
+

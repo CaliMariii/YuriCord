@@ -47,3 +47,4 @@ index 0e0f6f09f2c35f3276173c08f832cde9f2cf56a0..7dc22851715f3574d935f513c1b5e355
                      }
                      if (allowedEscapes.has(escapedChar)) {
                          return;
+

@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -33,12 +33,12 @@ export class Logger {
 
     private _log(level: "log" | "error" | "warn" | "info" | "debug", levelColor: string, args: any[], customFmt = "") {
         if (IS_REPORTER && IS_WEB) {
-            console[level]("[Vencord]", this.name + ":", ...args);
+            console[level]("[Yuricord]", this.name + ":", ...args);
             return;
         }
 
         console[level](
-            `%c Vencord %c %c ${this.name} ${customFmt}`,
+            `%c Yuricord %c %c ${this.name} ${customFmt}`,
             `background: ${levelColor}; color: black; font-weight: bold; border-radius: 5px;`,
             "",
             `background: ${this.color}; color: black; font-weight: bold; border-radius: 5px;`
@@ -70,3 +70,4 @@ export class Logger {
         this._log("debug", "#eebebe", args);
     }
 }
+

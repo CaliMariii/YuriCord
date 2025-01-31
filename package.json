@@ -2,7 +2,7 @@
     "name": "yuricord",
     "private": "true",
     "version": "1.0.0",
-    "description": "A branch of Vencord- designed for yuri among other things- with more custom plugins",
+    "description": "A branch of Yuricord- designed for yuri among other things- with more custom plugins",
     "homepage": "https://github.com/Koitoseed/Yuricord#readme",
     "bugs": {
         "url": "https://github.com/Koitoseed/YuriCord/issues"
@@ -24,7 +24,7 @@
         "dev": "pnpm watch",
         "watchWeb": "pnpm buildWeb --watch",
         "generatePluginJson": "tsx scripts/generatePluginList.ts",
-        "generateTypes": "tspc --emitDeclarationOnly --declaration --outDir packages/vencord-types",
+        "generateTypes": "tspc --emitDeclarationOnly --declaration --outDir packages/Yuricord-types",
         "inject": "node scripts/runInstaller.mjs",
         "uninject": "node scripts/runInstaller.mjs",
         "lint": "eslint",
@@ -111,3 +111,4 @@
         "pnpm": ">=9"
     }
 }
+

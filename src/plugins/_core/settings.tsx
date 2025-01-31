@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and Megumin
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,13 +17,13 @@
 */
 
 import { Settings } from "@api/Settings";
-import BackupAndRestoreTab from "@components/VencordSettings/BackupAndRestoreTab";
-import CloudTab from "@components/VencordSettings/CloudTab";
-import PatchHelperTab from "@components/VencordSettings/PatchHelperTab";
-import PluginsTab from "@components/VencordSettings/PluginsTab";
-import ThemesTab from "@components/VencordSettings/ThemesTab";
-import UpdaterTab from "@components/VencordSettings/UpdaterTab";
-import VencordTab from "@components/VencordSettings/VencordTab";
+import BackupAndRestoreTab from "@components/YuricordSettings/BackupAndRestoreTab";
+import CloudTab from "@components/YuricordSettings/CloudTab";
+import PatchHelperTab from "@components/YuricordSettings/PatchHelperTab";
+import PluginsTab from "@components/YuricordSettings/PluginsTab";
+import ThemesTab from "@components/YuricordSettings/ThemesTab";
+import UpdaterTab from "@components/YuricordSettings/UpdaterTab";
+import YuricordTab from "@components/YuricordSettings/YuricordTab";
 import { Devs } from "@utils/constants";
 import { getIntlMessage } from "@utils/discord";
 import definePlugin, { OptionType } from "@utils/types";
@@ -91,11 +91,11 @@ export default definePlugin({
             {
                 section: "YuricordSettings",
                 label: "Yuricord",
-                element: VencordTab,
+                element: YuricordTab,
                 className: "vc-settings"
             },
             {
-                section: "VencordPlugins",
+                section: "YuricordPlugins",
                 label: "Plugins",
                 element: PluginsTab,
                 className: "vc-plugins"
@@ -113,7 +113,7 @@ export default definePlugin({
                 className: "vc-updater"
             },
             {
-                section: "VencordCloud",
+                section: "YuricordCloud",
                 label: "Cloud",
                 element: CloudTab,
                 className: "vc-cloud"
@@ -203,12 +203,12 @@ export default definePlugin({
     },
 
     get electronVersion() {
-        return VencordNative.native.getVersions().electron || window.legcord?.electron || null;
+        return YuricordNative.native.getVersions().electron || window.legcord?.electron || null;
     },
 
     get chromiumVersion() {
         try {
-            return VencordNative.native.getVersions().chrome
+            return YuricordNative.native.getVersions().chrome
                 // @ts-ignore Typescript will add userAgentData IMMEDIATELY
                 || navigator.userAgentData?.brands?.find(b => b.brand === "Chromium" || b.brand === "Google Chrome")?.version
                 || null;
@@ -246,3 +246,4 @@ export default definePlugin({
         );
     }
 });
+

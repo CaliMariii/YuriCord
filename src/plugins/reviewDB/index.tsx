@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -128,7 +128,7 @@ export default definePlugin({
                     cancelText: "Appeal",
                     confirmText: "Ok",
                     onCancel: async () =>
-                        VencordNative.native.openExternal(
+                        YuricordNative.native.openExternal(
                             "https://reviewdb.mantikafasi.dev/api/redirect?"
                             + new URLSearchParams({
                                 token: Auth.token!,
@@ -170,3 +170,4 @@ export default definePlugin({
         );
     }, { noop: true })
 });
+

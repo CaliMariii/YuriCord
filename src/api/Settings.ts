@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -100,19 +100,19 @@ const DefaultSettings: Settings = {
 
     cloud: {
         authenticated: false,
-        url: "https://api.vencord.dev/",
+        url: "https://api.Yuricord.dev/",
         settingsSync: false,
         settingsSyncVersion: 0
     }
 };
 
-const settings = !IS_REPORTER ? VencordNative.settings.get() : {} as Settings;
+const settings = !IS_REPORTER ? YuricordNative.settings.get() : {} as Settings;
 mergeDefaults(settings, DefaultSettings);
 
 const saveSettingsOnFrequentAction = debounce(async () => {
     if (Settings.cloud.settingsSync && Settings.cloud.authenticated) {
         await putCloudSettings();
-        delete localStorage.Vencord_settingsDirty;
+        delete localStorage.Yuricord_settingsDirty;
     }
 }, 60_000);
 
@@ -162,9 +162,9 @@ export { OptionType } from "@utils/types";
 if (!IS_REPORTER) {
     SettingsStore.addGlobalChangeListener((_, path) => {
         SettingsStore.plain.cloud.settingsSyncVersion = Date.now();
-        localStorage.Vencord_settingsDirty = true;
+        localStorage.Yuricord_settingsDirty = true;
         saveSettingsOnFrequentAction();
-        VencordNative.settings.set(SettingsStore.plain, path);
+        YuricordNative.settings.set(SettingsStore.plain, path);
     });
 }
 
@@ -274,3 +274,4 @@ type ResolveUseSettings<T extends object> = {
     : Key
     : never;
 };
+

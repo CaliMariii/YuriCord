@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,17 +21,17 @@ import { contextBridge, webFrame } from "electron";
 import { readFileSync, watch } from "fs";
 import { join } from "path";
 
-import VencordNative from "./VencordNative";
+import YuricordNative from "./YuricordNative";
 
-contextBridge.exposeInMainWorld("VencordNative", VencordNative);
+contextBridge.exposeInMainWorld("YuricordNative", YuricordNative);
 
 // Discord
 if (location.protocol !== "data:") {
     // #region cssInsert
-    const rendererCss = join(__dirname, IS_VESKTOP ? "vencordDesktopRenderer.css" : "renderer.css");
+    const rendererCss = join(__dirname, IS_VESKTOP ? "YuricordDesktopRenderer.css" : "renderer.css");
 
     const style = document.createElement("style");
-    style.id = "vencord-css-core";
+    style.id = "Yuricord-css-core";
     style.textContent = readFileSync(rendererCss, "utf-8");
 
     if (document.readyState === "complete") {
@@ -46,7 +46,7 @@ if (location.protocol !== "data:") {
         // persistent means keep process running if watcher is the only thing still running
         // which we obviously don't want
         watch(rendererCss, { persistent: false }, () => {
-            document.getElementById("vencord-css-core")!.textContent = readFileSync(rendererCss, "utf-8");
+            document.getElementById("Yuricord-css-core")!.textContent = readFileSync(rendererCss, "utf-8");
         });
     }
     // #endregion
@@ -57,8 +57,9 @@ if (location.protocol !== "data:") {
     }
 } // Monaco popout
 else {
-    contextBridge.exposeInMainWorld("setCss", debounce(VencordNative.quickCss.set));
-    contextBridge.exposeInMainWorld("getCurrentCss", VencordNative.quickCss.get);
+    contextBridge.exposeInMainWorld("setCss", debounce(YuricordNative.quickCss.set));
+    contextBridge.exposeInMainWorld("getCurrentCss", YuricordNative.quickCss.get);
     // shrug
     contextBridge.exposeInMainWorld("getTheme", () => "vs-dark");
 }
+

@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -18,9 +18,10 @@ export default definePlugin({
             replacement: {
                 match: /return\((!)?\i\.\i(?:\|\||&&)(?=\(\i\.isDM.+?(\i)\.push)/,
                 replace: (m, not, children) => not
-                    ? `${m}(Vencord.Api.ChatButtons._injectButtons(${children},arguments[0]),true)&&`
-                    : `${m}(Vencord.Api.ChatButtons._injectButtons(${children},arguments[0]),false)||`
+                    ? `${m}(Yuricord.Api.ChatButtons._injectButtons(${children},arguments[0]),true)&&`
+                    : `${m}(Yuricord.Api.ChatButtons._injectButtons(${children},arguments[0]),false)||`
             }
         }
     ]
 });
+

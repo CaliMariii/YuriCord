@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -14,3 +14,4 @@ export const RAW_SKU_ID = "11497119"; // raw in ascii numbers
 export const GUILD_ID = "1096357702931841148";
 export const INVITE_KEY = "dXp2SdxDcP";
 export const DECORATION_FETCH_COOLDOWN = 1000 * 60 * 60 * 4; // 4 hours
+

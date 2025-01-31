@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -60,7 +60,7 @@ export default definePlugin({
 
     async start() {
         style = document.createElement("style");
-        style.id = "VencordHideAttachments";
+        style.id = "YuricordHideAttachments";
         document.head.appendChild(style);
 
         await getHiddenMessages();
@@ -96,3 +96,4 @@ export default definePlugin({
         await this.buildCss();
     }
 });
+

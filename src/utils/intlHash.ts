@@ -50,3 +50,4 @@ export function runtimeHashMessageKey(key: string): string {
         BASE64_TABLE[((bytes[3] & 0x03) << 4) | (bytes[3] >> 4)],
     ].join("");
 }
+

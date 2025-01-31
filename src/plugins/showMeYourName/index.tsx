@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 rini
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -82,3 +82,4 @@ export default definePlugin({
         }
     }, { noop: true }),
 });
+

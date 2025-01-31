@@ -2,7 +2,7 @@ dist
 node_modules
 
 *.exe
-vencord_installer
+Yuricord_installer
 
 .idea
 .DS_Store
@@ -22,3 +22,4 @@ src/userplugins
 
 ExtensionCache/
 settings/
+

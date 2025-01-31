@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2023 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,5 +31,6 @@ for (const dir of ["top", "bottom", "left", "right"] as const) {
 document.addEventListener("DOMContentLoaded", () =>
     document.head.append(Object.assign(document.createElement("style"), {
         textContent: styleStr,
-        id: "vencord-margins"
+        id: "Yuricord-margins"
     })), { once: true });
+

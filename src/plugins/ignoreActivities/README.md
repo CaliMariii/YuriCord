@@ -11,3 +11,4 @@ Ignore activities from showing up on your status ONLY. You can configure which o
 The activity stays showing as a detected game even if ignored, differently from the stock Toggle Detection button from Discord:
 
 ![](https://github.com/user-attachments/assets/08ea60c3-3a31-42de-ae4c-7535fbf1b45a)
+

@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -27,7 +27,7 @@ export function NotificationSettings() {
             <Forms.FormText className={Margins.bottom8}>
                 Some plugins may show you notifications. These come in two styles:
                 <ul>
-                    <li><strong>Vencord Notifications</strong>: These are in-app notifications</li>
+                    <li><strong>Yuricord Notifications</strong>: These are in-app notifications</li>
                     <li><strong>Desktop Notifications</strong>: Native Desktop notifications (like when you get a ping)</li>
                 </ul>
             </Forms.FormText>
@@ -104,3 +104,4 @@ export function openNotificationSettingsModal() {
         </ModalRoot>
     ));
 }
+

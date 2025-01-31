@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,10 +29,10 @@ export default definePlugin({
             replacement: [
                 {
                     match: /let\{[^}]*lostPermissionTooltipText:\i[^}]*\}=(\i),/,
-                    replace: "$&vencordProps=$1,"
+                    replace: "$&YuricordProps=$1,"
                 }, {
                     match: /#{intl::GUILD_OWNER}(?=.+?decorators:(\i)\(\)).+?\1=?\(\)=>.+?children:\[/,
-                    replace: "$&...(typeof vencordProps=='undefined'?[]:Vencord.Api.MemberListDecorators.__getDecorators(vencordProps)),"
+                    replace: "$&...(typeof YuricordProps=='undefined'?[]:Yuricord.Api.MemberListDecorators.__getDecorators(YuricordProps)),"
                 }
             ]
         },
@@ -40,8 +40,9 @@ export default definePlugin({
             find: "PrivateChannel.renderAvatar",
             replacement: {
                 match: /decorators:(\i\.isSystemDM\(\))\?(.+?):null/,
-                replace: "decorators:[...Vencord.Api.MemberListDecorators.__getDecorators(arguments[0]), $1?$2:null]"
+                replace: "decorators:[...Yuricord.Api.MemberListDecorators.__getDecorators(arguments[0]), $1?$2:null]"
             }
         }
     ],
 });
+

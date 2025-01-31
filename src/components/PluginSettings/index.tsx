@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,8 +24,8 @@ import { Settings, useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
 import { CogWheel, InfoIcon } from "@components/Icons";
 import { openPluginModal } from "@components/PluginSettings/PluginModal";
-import { AddonCard } from "@components/VencordSettings/AddonCard";
-import { SettingsTab } from "@components/VencordSettings/shared";
+import { AddonCard } from "@components/YuricordSettings/AddonCard";
+import { SettingsTab } from "@components/YuricordSettings/shared";
 import { ChangeList } from "@utils/ChangeList";
 import { proxyLazy } from "@utils/lazy";
 import { Logger } from "@utils/Logger";
@@ -94,7 +94,7 @@ interface PluginCardProps extends React.HTMLProps<HTMLDivElement> {
 export function PluginCard({ plugin, disabled, onRestartNeeded, onMouseEnter, onMouseLeave, isNew }: PluginCardProps) {
     const settings = Settings.plugins[plugin.name];
 
-    const isEnabled = () => Vencord.Plugins.isPluginEnabled(plugin.name);
+    const isEnabled = () => Yuricord.Plugins.isPluginEnabled(plugin.name);
 
     function toggleEnabled() {
         const wasEnabled = isEnabled();
@@ -180,7 +180,7 @@ function ExcludedPluginsList({ search }: { search: string; }) {
     const ExcludedReasons: Record<"web" | "discordDesktop" | "YuricordDesktop" | "desktop" | "dev", string> = {
         desktop: "Discord Desktop app or Vesktop",
         discordDesktop: "Discord Desktop app",
-        vencordDesktop: "Vesktop app",
+        YuricordDesktop: "Vesktop app",
         web: "Vesktop app and the Web version of Discord",
         dev: "Developer version of Yuricord"
     };
@@ -253,7 +253,7 @@ export default function PluginSettings() {
 
     const pluginFilter = (plugin: typeof Plugins[keyof typeof Plugins]) => {
         const { status } = searchValue;
-        const enabled = Vencord.Plugins.isPluginEnabled(plugin.name);
+        const enabled = Yuricord.Plugins.isPluginEnabled(plugin.name);
         if (enabled && status === SearchStatus.DISABLED) return false;
         if (!enabled && status === SearchStatus.ENABLED) return false;
         if (status === SearchStatus.NEW && !newPlugins?.includes(plugin.name)) return false;
@@ -266,7 +266,7 @@ export default function PluginSettings() {
         );
     };
 
-    const [newPlugins] = useAwaiter(() => DataStore.get("Vencord_existingPlugins").then((cachedPlugins: Record<string, number> | undefined) => {
+    const [newPlugins] = useAwaiter(() => DataStore.get("Yuricord_existingPlugins").then((cachedPlugins: Record<string, number> | undefined) => {
         const now = Date.now() / 1000;
         const existingTimestamps: Record<string, number> = {};
         const sortedPluginNames = Object.values(sortedPlugins).map(plugin => plugin.name);
@@ -278,7 +278,7 @@ export default function PluginSettings() {
                 newPlugins.push(p);
             }
         }
-        DataStore.set("Vencord_existingPlugins", existingTimestamps);
+        DataStore.set("Yuricord_existingPlugins", existingTimestamps);
 
         return lodash.isEqual(newPlugins, sortedPluginNames) ? [] : newPlugins;
     }));
@@ -392,3 +392,4 @@ function makeDependencyList(deps: string[]) {
         </React.Fragment>
     );
 }
+

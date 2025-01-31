@@ -11,3 +11,4 @@ export const Example: React.FC<{
     <p>{`Shigg${real ? `ies${shigged === 0x1B ? "t" : ""}` : "y"}`}</p>
     <button onClick={handleClick}>Click Me</button>
 </>;
+

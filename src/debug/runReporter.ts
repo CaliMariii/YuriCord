@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -59,12 +59,12 @@ async function runReporter() {
                     result = Webpack[method](...args);
                 }
 
-                if (result == null || (result.$$vencordInternal != null && result.$$vencordInternal() == null)) throw new Error("Webpack Find Fail");
+                if (result == null || (result.$$YuricordInternal != null && result.$$YuricordInternal() == null)) throw new Error("Webpack Find Fail");
             } catch (e) {
                 let logMessage = searchType;
                 if (method === "find" || method === "proxyLazyWebpack" || method === "LazyComponentWebpack") {
-                    if (args[0].$$vencordProps != null) {
-                        logMessage += `(${args[0].$$vencordProps.map(arg => `"${arg}"`).join(", ")})`;
+                    if (args[0].$$YuricordProps != null) {
+                        logMessage += `(${args[0].$$YuricordProps.map(arg => `"${arg}"`).join(", ")})`;
                     } else {
                         logMessage += `(${args[0].toString().slice(0, 147)}...)`;
                     }
@@ -89,3 +89,4 @@ async function runReporter() {
 }
 
 runReporter();
+

@@ -30,3 +30,4 @@ chrome.webRequest.onHeadersReceived.addListener(
     { urls: ["https://raw.githubusercontent.com/*", "*://*.discord.com/*"], types: ["main_frame", "stylesheet"] },
     ["blocking", "responseHeaders"]
 );
+

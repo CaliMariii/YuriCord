@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ Object.defineProperty(window, WEBPACK_CHUNK, {
     get: () => webpackChunk,
     set: v => {
         if (v?.push) {
-            if (!v.push.$$vencordOriginal) {
+            if (!v.push.$$YuricordOriginal) {
                 logger.info(`Patching ${WEBPACK_CHUNK}.push`);
                 patchPush(v);
 
@@ -117,24 +117,24 @@ function patchPush(webpackGlobal: any) {
             logger.error("Error in handlePush", err);
         }
 
-        return handlePush.$$vencordOriginal.call(webpackGlobal, chunk);
+        return handlePush.$$YuricordOriginal.call(webpackGlobal, chunk);
     }
 
-    handlePush.$$vencordOriginal = webpackGlobal.push;
-    handlePush.toString = handlePush.$$vencordOriginal.toString.bind(handlePush.$$vencordOriginal);
+    handlePush.$$YuricordOriginal = webpackGlobal.push;
+    handlePush.toString = handlePush.$$YuricordOriginal.toString.bind(handlePush.$$YuricordOriginal);
     // Webpack overwrites .push with its own push like so: `d.push = n.bind(null, d.push.bind(d));`
     // it wraps the old push (`d.push.bind(d)`). this old push is in this case our handlePush.
     // If we then repatched the new push, we would end up with recursive patching, which leads to our patches
     // being applied multiple times.
     // Thus, override bind to use the original push
-    handlePush.bind = (...args: unknown[]) => handlePush.$$vencordOriginal.bind(...args);
+    handlePush.bind = (...args: unknown[]) => handlePush.$$YuricordOriginal.bind(...args);
 
     Object.defineProperty(webpackGlobal, "push", {
         configurable: true,
 
         get: () => handlePush,
         set(v) {
-            handlePush.$$vencordOriginal = v;
+            handlePush.$$YuricordOriginal = v;
         }
     });
 }
@@ -216,7 +216,7 @@ function patchFactories(factories: Record<string, (module: any, exports: any, re
                     logger.error("Error while firing callback for Webpack subscription:\n", err, filter, callback);
                 }
             }
-        } as any as { toString: () => string, original: any, (...args: any[]): void; $$vencordPatchedSource?: string; };
+        } as any as { toString: () => string, original: any, (...args: any[]): void; $$YuricordPatchedSource?: string; };
 
         factory.toString = originalMod.toString.bind(originalMod);
         factory.original = originalMod;
@@ -340,14 +340,15 @@ function patchFactories(factories: Record<string, (module: any, exports: any, re
 
         if (IS_DEV) {
             if (mod !== originalMod) {
-                factory.$$vencordPatchedSource = String(mod);
+                factory.$$YuricordPatchedSource = String(mod);
             } else if (wreq != null) {
                 const existingFactory = wreq.m[id];
 
                 if (existingFactory != null) {
-                    factory.$$vencordPatchedSource = existingFactory.$$vencordPatchedSource;
+                    factory.$$YuricordPatchedSource = existingFactory.$$YuricordPatchedSource;
                 }
             }
         }
     }
 }
+

@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -223,3 +223,4 @@ export function getEmojiURL(id: string, animated: boolean, size: number) {
     const url = IconUtils.getEmojiURL({ id, animated, size });
     return animated ? url.replace(".webp", ".gif") : url;
 }
+

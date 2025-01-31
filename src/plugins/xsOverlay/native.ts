@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -14,3 +14,4 @@ export function sendToOverlay(_, data: any) {
     xsoSocket ??= createSocket("udp4");
     xsoSocket.send(json, 42069, "127.0.0.1");
 }
+

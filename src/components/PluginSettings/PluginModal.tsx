@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import { useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Flex } from "@components/Flex";
-import { gitRemote } from "@shared/vencordUserAgent";
+import { gitRemote } from "@shared/YuricordUserAgent";
 import { proxyLazy } from "@utils/lazy";
 import { Margins } from "@utils/margins";
 import { classes, isObjectEmpty } from "@utils/misc";
@@ -196,7 +196,7 @@ export default function PluginModal({ plugin, onRestartNeeded, onClose, transiti
     function switchToPopout() {
         onClose();
 
-        const PopoutKey = `DISCORD_VENCORD_PLUGIN_SETTINGS_MODAL_${plugin.name}`;
+        const PopoutKey = `DISCORD_Yuricord_PLUGIN_SETTINGS_MODAL_${plugin.name}`;
         PopoutActions.open(
             PopoutKey,
             () => <PluginModal
@@ -231,7 +231,7 @@ export default function PluginModal({ plugin, onRestartNeeded, onClose, transiti
                             <div className="vc-settings-modal-links">
                                 <WebsiteButton
                                     text="View more info"
-                                    href={`https://vencord.dev/plugins/${plugin.name}`}
+                                    href={`https://Yuricord.dev/plugins/${plugin.name}`}
                                 />
                                 <GithubButton
                                     text="View source code"
@@ -323,3 +323,4 @@ export function openPluginModal(plugin: Plugin, onRestartNeeded?: (pluginName: s
         />
     ));
 }
+

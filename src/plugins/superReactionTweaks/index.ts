@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated, ant0n, FieryFlames and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -67,3 +67,4 @@ export default definePlugin({
         return settings.store.superReactByDefault && UserStore.getCurrentUser().premiumType != null;
     }
 });
+

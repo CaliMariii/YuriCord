@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -179,3 +179,4 @@ async function migrateData() {
 
     await Promise.all([DataStore.del(CATEGORY_MIGRATED_PINDMS_KEY), DataStore.del(CATEGORY_MIGRATED_KEY), DataStore.del(OLD_CATEGORY_KEY)]);
 }
+

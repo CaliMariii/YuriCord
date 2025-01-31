@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2023 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,3 +43,4 @@ export const ContextMenuApi: t.ContextMenuApi = mapMangledModuleLazy('type:"CONT
     openContextMenu: filters.byCode("renderLazy:"),
     openContextMenuLazy: e => typeof e === "function" && e.toString().length < 100
 });
+

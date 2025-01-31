@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -63,3 +63,4 @@ function GuidelinesModal(props: ModalProps) {
 
 export const openGuidelinesModal = () =>
     requireAvatarDecorationModal().then(() => openModal(props => <GuidelinesModal {...props} />));
+

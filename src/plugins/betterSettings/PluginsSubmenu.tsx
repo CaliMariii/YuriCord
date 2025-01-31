@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -28,7 +28,7 @@ export default function PluginsSubmenu() {
 
     const search = query.toLowerCase();
     const include = (p: typeof Plugins[keyof typeof Plugins]) => (
-        Vencord.Plugins.isPluginEnabled(p.name)
+        Yuricord.Plugins.isPluginEnabled(p.name)
         && p.options && !isObjectEmpty(p.options)
         && (
             p.name.toLowerCase().includes(search)
@@ -67,3 +67,4 @@ export default function PluginsSubmenu() {
         </>
     );
 }
+

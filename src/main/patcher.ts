@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@ import { initIpc } from "./ipcMain";
 import { RendererSettings } from "./settings";
 import { IS_VANILLA } from "./utils/constants";
 
-console.log("[Vencord] Starting up...");
+console.log("[Yuricord] Starting up...");
 
 // Our injector file at app/index.js
 const injectorPath = require.main!.filename;
@@ -71,7 +71,7 @@ if (!IS_VANILLA) {
         constructor(options: BrowserWindowConstructorOptions) {
             if (options?.webPreferences?.preload && options.title) {
                 const original = options.webPreferences.preload;
-                options.webPreferences.preload = join(__dirname, IS_DISCORD_DESKTOP ? "preload.js" : "vencordDesktopPreload.js");
+                options.webPreferences.preload = join(__dirname, IS_DISCORD_DESKTOP ? "preload.js" : "YuricordDesktopPreload.js");
                 options.webPreferences.sandbox = false;
                 // work around discord unloading when in background
                 options.webPreferences.backgroundThrottling = false;
@@ -129,7 +129,7 @@ if (!IS_VANILLA) {
         }
     });
 
-    process.env.DATA_DIR = join(app.getPath("userData"), "..", "Vencord");
+    process.env.DATA_DIR = join(app.getPath("userData"), "..", "Yuricord");
 
     // Monkey patch commandLine to:
     // - disable WidgetLayering: Fix DevTools context menus https://github.com/electron/electron/issues/38790
@@ -154,8 +154,9 @@ if (!IS_VANILLA) {
     app.commandLine.appendSwitch("disable-background-timer-throttling");
     app.commandLine.appendSwitch("disable-backgrounding-occluded-windows");
 } else {
-    console.log("[Vencord] Running in vanilla mode. Not loading Vencord");
+    console.log("[Yuricord] Running in vanilla mode. Not loading Yuricord");
 }
 
-console.log("[Vencord] Loading original Discord app.asar");
+console.log("[Yuricord] Loading original Discord app.asar");
 require(require.main!.filename);
+

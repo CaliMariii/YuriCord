@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -119,7 +119,7 @@ export function initIpc(mainWindow: BrowserWindow) {
 }
 
 ipcMain.handle(IpcEvents.OPEN_MONACO_EDITOR, async () => {
-    const title = "Vencord QuickCSS Editor";
+    const title = "Yuricord QuickCSS Editor";
     const existingWindow = BrowserWindow.getAllWindows().find(w => w.title === title);
     if (existingWindow && !existingWindow.isDestroyed()) {
         existingWindow.focus();
@@ -131,7 +131,7 @@ ipcMain.handle(IpcEvents.OPEN_MONACO_EDITOR, async () => {
         autoHideMenuBar: true,
         darkTheme: true,
         webPreferences: {
-            preload: join(__dirname, IS_DISCORD_DESKTOP ? "preload.js" : "vencordDesktopPreload.js"),
+            preload: join(__dirname, IS_DISCORD_DESKTOP ? "preload.js" : "YuricordDesktopPreload.js"),
             contextIsolation: true,
             nodeIntegration: false,
             sandbox: false
@@ -142,3 +142,4 @@ ipcMain.handle(IpcEvents.OPEN_MONACO_EDITOR, async () => {
 
     await win.loadURL(`data:text/html;base64,${monacoHtml}`);
 });
+

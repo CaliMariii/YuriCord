@@ -7,7 +7,7 @@ on:
 
 jobs:
     TestPlugins:
-        if: github.repository == 'Vendicated/Vencord'
+        if: github.repository == 'Vendicated/Yuricord'
         runs-on: ubuntu-latest
 
         steps:
@@ -37,7 +37,7 @@ jobs:
               with:
                   chrome-version: stable
 
-            - name: Build Vencord Reporter Version
+            - name: Build Yuricord Reporter Version
               run: pnpm buildReporter
 
             - name: Create Report
@@ -65,3 +65,4 @@ jobs:
               env:
                   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
                   DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+

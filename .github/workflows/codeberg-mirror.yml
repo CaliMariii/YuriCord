@@ -10,7 +10,7 @@ on:
 
 jobs:
     codeberg:
-        if: github.repository == 'Vendicated/Vencord'
+        if: github.repository == 'Vendicated/Yuricord'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -20,3 +20,4 @@ jobs:
               with:
                   target_repo_url: "git@codeberg.org:Vee/cord.git"
                   ssh_private_key: ${{ secrets.CODEBERG_SSH_PRIVATE_KEY }}
+

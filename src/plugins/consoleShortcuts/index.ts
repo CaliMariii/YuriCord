@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -96,11 +96,11 @@ function makeShortcuts() {
         findAllComponentsByCode: (...code: string[]) => findAll(filters.componentByCode(...code)),
         findExportedComponent: (...props: string[]) => findByProps(...props)[props[0]],
         findStore: newFindWrapper(filters.byStoreName),
-        PluginsApi: { getter: () => Vencord.Plugins },
-        plugins: { getter: () => Vencord.Plugins.plugins },
-        Settings: { getter: () => Vencord.Settings },
-        Api: { getter: () => Vencord.Api },
-        Util: { getter: () => Vencord.Util },
+        PluginsApi: { getter: () => Yuricord.Plugins },
+        plugins: { getter: () => Yuricord.Plugins.plugins },
+        Settings: { getter: () => Yuricord.Settings },
+        Api: { getter: () => Yuricord.Api },
+        Util: { getter: () => Yuricord.Util },
         reload: () => location.reload(),
         restart: IS_WEB ? DESKTOP_ONLY("restart") : relaunch,
         canonicalizeMatch,
@@ -126,7 +126,7 @@ function makeShortcuts() {
 
                     if (s.parentElement?.tagName === "HEAD")
                         doc.head.append(n);
-                    else if (n.id?.startsWith("vencord-") || n.id?.startsWith("vcd-"))
+                    else if (n.id?.startsWith("Yuricord-") || n.id?.startsWith("vcd-"))
                         doc.documentElement.append(n);
                     else
                         doc.body.append(n);
@@ -139,7 +139,7 @@ function makeShortcuts() {
             doc.addEventListener("close", () => root.unmount(), { once: true });
         },
 
-        preEnable: (plugin: string) => (Vencord.Settings.plugins[plugin] ??= { enabled: true }).enabled = true,
+        preEnable: (plugin: string) => (Yuricord.Settings.plugins[plugin] ??= { enabled: true }).enabled = true,
 
         channel: { getter: () => getCurrentChannel(), preload: false },
         channelId: { getter: () => Common.SelectedChannelStore.getChannelId(), preload: false },
@@ -168,8 +168,8 @@ function loadAndCacheShortcut(key: string, val: any, forceLoad: boolean) {
     function unwrapProxy(value: any) {
         if (value[SYM_LAZY_GET]) {
             forceLoad ? currentVal[SYM_LAZY_GET]() : currentVal[SYM_LAZY_CACHED];
-        } else if (value.$$vencordInternal) {
-            return forceLoad ? value.$$vencordInternal() : value;
+        } else if (value.$$YuricordInternal) {
+            return forceLoad ? value.$$YuricordInternal() : value;
         }
 
         return value;
@@ -241,7 +241,7 @@ export default definePlugin({
             setTimeout(() => this.eagerLoad(false), 1000);
 
             if (!IS_WEB) {
-                const Native = VencordNative.pluginHelpers.ConsoleShortcuts as PluginNative<typeof import("./native")>;
+                const Native = YuricordNative.pluginHelpers.ConsoleShortcuts as PluginNative<typeof import("./native")>;
                 Native.initDevtoolsOpenEagerLoad();
             }
         });
@@ -268,3 +268,4 @@ export default definePlugin({
         }
     }
 });
+

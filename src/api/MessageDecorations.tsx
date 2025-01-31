@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,3 +68,4 @@ export function __addDecorationsToMessage(props: MessageDecorationProps): (JSX.E
         )
     );
 }
+

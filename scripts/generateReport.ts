@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -87,7 +87,7 @@ function toCodeBlock(s: string, indentation = 0, isDiscord = false) {
 async function printReport() {
     console.log();
 
-    console.log("# Vencord Report" + (CANARY ? " (Canary)" : ""));
+    console.log("# Yuricord Report" + (CANARY ? " (Canary)" : ""));
 
     console.log();
 
@@ -135,8 +135,8 @@ async function printReport() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                description: "Here's the latest Vencord Report!",
-                username: "Vencord Reporter" + (CANARY ? " (Canary)" : ""),
+                description: "Here's the latest Yuricord Report!",
+                username: "Yuricord Reporter" + (CANARY ? " (Canary)" : ""),
                 embeds: [
                     {
                         title: "Bad Patches",
@@ -200,11 +200,11 @@ page.on("console", async e => {
 
     const firstArg = await rawArgs[0]?.jsonValue();
 
-    const isVencord = firstArg === "[Vencord]";
+    const isYuricord = firstArg === "[Yuricord]";
     const isDebug = firstArg === "[PUP_DEBUG]";
 
     outer:
-    if (isVencord) {
+    if (isYuricord) {
         try {
             var args = await Promise.all(e.args().map(a => a.jsonValue()));
         } catch {
@@ -301,7 +301,7 @@ page.on("pageerror", e => {
 });
 
 async function reporterRuntime(token: string) {
-    Vencord.Webpack.waitFor(
+    Yuricord.Webpack.waitFor(
         "loginToken",
         m => {
             console.log("[PUP_DEBUG]", "Logging in with token...");
@@ -318,3 +318,4 @@ await page.evaluateOnNewDocument(`
 `);
 
 await page.goto(CANARY ? "https://canary.discord.com/login" : "https://discord.com/login");
+

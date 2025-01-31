@@ -144,7 +144,7 @@ importers:
         specifier: ^0.3.5
         version: 0.3.5
 
-  packages/vencord-types:
+  packages/Yuricord-types:
     dependencies:
       '@types/lodash':
         specifier: ^4.14.191
@@ -5811,3 +5811,4 @@ snapshots:
       q: 1.5.1
 
   zod@3.23.8: {}
+

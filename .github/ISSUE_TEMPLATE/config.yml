@@ -1,8 +1,9 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Vencord Support Server
+  - name: Yuricord Support Server
     url: https://discord.gg/D9uwnFnqmd
-    about: If you need help regarding Vencord, please join our support server!
-  - name: Vencord Installer
-    url: https://github.com/Vencord/Installer
-    about: You can find the Vencord Installer here
+    about: If you need help regarding Yuricord, please join our support server!
+  - name: Yuricord Installer
+    url: https://github.com/Yuricord/Installer
+    about: You can find the Yuricord Installer here
+

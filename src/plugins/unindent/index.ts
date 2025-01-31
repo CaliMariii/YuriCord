@@ -1,5 +1,5 @@
 /*
- * Vencord, a modification for Discord's desktop app
+ * Yuricord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ export default definePlugin({
             find: "inQuote:",
             replacement: {
                 match: /,content:([^,]+),inQuote/,
-                replace: (_, content) => `,content:Vencord.Plugins.plugins.Unindent.unindent(${content}),inQuote`
+                replace: (_, content) => `,content:Yuricord.Plugins.plugins.Unindent.unindent(${content}),inQuote`
             }
         }
     ],
@@ -63,3 +63,4 @@ export default definePlugin({
         return this.unindentMsg(msg);
     }
 });
+

@@ -1,5 +1,5 @@
 /*
- * Vencord, a Discord client mod
+ * Yuricord, a Discord client mod
  * Copyright (c) 2023 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -31,3 +31,4 @@ type DecorationGridDecorationComponent = React.ComponentType<HTMLProps<HTMLDivEl
 
 export let DecorationGridDecoration: DecorationGridDecorationComponent;
 export const setDecorationGridDecoration = v => DecorationGridDecoration = v;
+
