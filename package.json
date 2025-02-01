@@ -15,11 +15,15 @@
     "license": "GPL-3.0-or-later",
     "author": "Koitoseed",
     "scripts": {
-        "build": "node --require=./scripts/suppressExperimentalWarnings.js scripts/build/build.mjs",
+        "build": "pnpm build:core && pnpm build:patcher",
+        "build:core": "tsc -p tsconfig.json",
+        "build:patcher": "tsc -p tsconfig.patcher.json",
         "inject": "node scripts/installer.js",
         "uninject": "node scripts/uninject.js",
         "pkg": "pkg scripts/installer.js --targets win --output YuricordInstallerCli.exe",
-        "test": "pnpm lint && pnpm build && pnpm generatePluginJson"
+        "test": "pnpm lint && pnpm build && pnpm generatePluginJson",
+        "generatePluginJson": "node scripts/generatePlugins.js",
+        "lint": "eslint \"src/**/*.{ts,js}\""
     },
     "bin": {
         "yuricord-installer": "scripts/installer.js"

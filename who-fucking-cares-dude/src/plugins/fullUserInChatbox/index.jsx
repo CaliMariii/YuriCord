@@ -1,0 +1,29 @@
+/*
+ * Yuricord, a Discord client mod
+ * Copyright (c) 2024 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+import ErrorBoundary from "@components/ErrorBoundary";
+import { Devs } from "@utils/constants";
+import definePlugin from "@utils/types";
+import { findComponentByCodeLazy } from "@webpack";
+const UserMentionComponent = findComponentByCodeLazy(".USER_MENTION)");
+export default definePlugin({
+    name: "FullUserInChatbox",
+    description: "Makes the user mention in the chatbox have more functionalities, like left/right clicking",
+    authors: [Devs.sadan],
+    patches: [
+        {
+            find: ':"text":',
+            replacement: {
+                match: /(hidePersonalInformation\).+?)(if\(null!=\i\){.+?return \i)(?=})/,
+                replace: "$1return $self.UserMentionComponent({...arguments[0],originalComponent:()=>{$2}});"
+            }
+        }
+    ],
+    UserMentionComponent: ErrorBoundary.wrap((props) => (<UserMentionComponent 
+    // This seems to be constant
+    className="mention" userId={props.id} channelId={props.channelId}/>), {
+        fallback: ({ wrappedProps: { originalComponent } }) => originalComponent()
+    })
+});

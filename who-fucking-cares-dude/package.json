@@ -1,0 +1,51 @@
+{
+    "name": "yuricord",
+    "private": true,
+    "version": "1.0.0",
+    "description": "A branch of Yuricord - designed for yuri among other things - with more custom plugins",
+    "type": "module",
+    "homepage": "https://github.com/Koitoseed/Yuricord#readme",
+    "bugs": {
+        "url": "https://github.com/Koitoseed/Yuricord/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Koitoseed/Yuricord.git"
+    },
+    "license": "GPL-3.0-or-later",
+    "author": "Koitoseed",
+    "scripts": {
+        "build": "pnpm build:core && pnpm build:patcher",
+        "build:core": "tsc -p tsconfig.json",
+        "build:patcher": "tsc -p tsconfig.patcher.json",
+        "inject": "node scripts/installer.js",
+        "uninject": "node scripts/uninject.js",
+        "pkg": "pkg scripts/installer.js --targets win --output YuricordInstallerCli.exe",
+        "test": "pnpm lint && pnpm build && pnpm generatePluginJson",
+        "generatePluginJson": "node scripts/generatePlugins.js",
+        "lint": "eslint \"src/**/*.{ts,js}\""
+    },
+    "bin": {
+        "yuricord-installer": "scripts/installer.js"
+    },
+    "dependencies": {
+        "@intrnl/xxhash64": "^0.1.2",
+        "@vap/core": "0.0.12",
+        "asar": "^3.2.0",
+        "chalk": "^5.4.1",
+        "inquirer": "^8.2.6",
+        "monaco-editor": "^0.52.2",
+        "virtual-merge": "^1.0.1"
+    },
+    "devDependencies": {
+        "@stylistic/eslint-plugin": "^2.12.1",
+        "@types/node": "^22.10.5",
+        "eslint": "^8.57.1",
+        "typescript": "^5.7.2"
+    },
+    "packageManager": "pnpm@9.1.0",
+    "engines": {
+        "node": ">=18",
+        "pnpm": ">=9"
+    }
+}
