@@ -1,0 +1,81 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250201171607
+Username: MARIPC\CaliM
+RunAs User: MARIPC\CaliM
+Configuration Name: 
+Machine: MARIPC (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\CaliM\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 16924
+PSVersion: 5.1.26100.2161
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.2161
+BuildVersion: 10.0.26100.2161
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is session-log.txt
+]633;D;0]633;A]633;P;Cwd=C:\x5cYuricordPS C:\Yuricord> ]633;B
+PS>pnpm build
+     4  src/plugins/spotifyControls/PlayerComponent.tsx:66
+     2  src/plugins/spotifyControls/SpotifyStore.ts:92
+     1  src/plugins/startupTimings/StartupTimingPage.tsx:104
+     1  src/plugins/themeAttributes/index.ts:10
+     4  src/plugins/translate/settings.ts:55
+     1  src/plugins/translate/TranslateIcon.tsx:60
+     1  src/plugins/translate/TranslateModal.tsx:88
+     1  src/plugins/translate/TranslationAccessory.tsx:20
+     3  src/plugins/translate/utils.ts:29
+     2  src/plugins/typingTweaks/index.tsx:25
+     1  src/plugins/userMessagesPronouns/PronounsChatComponent.tsx:25
+    10  src/plugins/userVoiceShow/components.tsx:12
+     2  src/plugins/validReply/index.ts:11
+     2  src/plugins/validUser/index.tsx:26
+     3  src/plugins/vcNarrator/index.tsx:28
+     1  src/plugins/viewIcons/index.tsx:26
+     2  src/plugins/viewRaw/index.tsx:31
+     1  src/plugins/voiceDownload/index.tsx:33
+     2  src/plugins/voiceMessages/DesktopRecorder.tsx:26
+     2  src/plugins/voiceMessages/index.tsx:32
+     1  src/plugins/voiceMessages/WebRecorder.tsx:72
+     1  src/plugins/volumeBooster/index.ts:72
+     5  src/plugins/webContextMenus.web/index.ts:47
+     2  src/plugins/webKeybinds.web/index.ts:38
+     2  src/plugins/whoReacted/index.tsx:28
+     5  src/plugins/xsOverlay/index.tsx:14
+     5  src/plugins/youtubeAdblock.desktop/native.ts:13
+    11  src/plugins/YuricordToolbox/index.tsx:28
+     3  src/preload.ts:31
+     1  src/shared/onceDefined.ts:19
+     1  src/shared/SettingsStore.ts:7
+     1  src/utils/dependencies.ts:72
+     2  src/utils/discord.tsx:23
+     2  src/utils/lazyReact.tsx:7
+     2  src/utils/Logger.ts:35
+     1  src/utils/modal.tsx:20
+     6  src/utils/native.ts:20
+     1  src/utils/Queue.ts:19
+     7  src/utils/quickCss.ts:34
+     2  src/utils/react.tsx:20
+    12  src/utils/settingsSync.ts:22
+     3  src/utils/types.ts:29
+     7  src/utils/updater.ts:41
+     1  src/utils/web-metadata.ts:10
+     4  src/webpack/common/internal.tsx:24
+     3  src/webpack/common/react.ts:22
+     1  src/webpack/common/stores.ts:19
+     7  src/webpack/common/utils.ts:20
+     6  src/webpack/patchWebpack.ts:23
+    24  src/webpack/webpack.ts:23
+     5  src/Yuricord.ts:45
+ ELIFECYCLE  Command failed with exit code 2.
+ ELIFECYCLE  Command failed with exit code 2.
+]633;D;1]633;A]633;P;Cwd=C:\x5cYuricordPS C:\Yuricord> ]633;B
+PS>Stop-Transcript
+
+**********************
+Windows PowerShell transcript end
+End time: 20250201171622
+**********************
